@@ -12,7 +12,6 @@
  * D2 arc geometry appears in hero at opacity 0.04 — top-right, position:absolute
  * Platform framework: inline SVG schematic (architectural drawing quality)
  */
-import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import { D2LogoBg } from '../components/D2Logo';
