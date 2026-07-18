@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Spirea Platform — Strategic Applications · D1 Resilient Infrastructure -->
+<!-- D2 Brand System · © 2026 Spirea Platform · Transparent background -->
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 280 360" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Infrastructure — remote terrain context">
+          <title>Infrastructure context — remote terrain</title>
+          <defs>
+            <pattern id="t1" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#C8C4B8" stroke-width="0.3"/>
+            </pattern>
+          </defs>
+          <rect width="280" height="360" fill="#CDCAC4"/>
+          <rect width="280" height="360" fill="url(#t1)"/>
+          <!-- Horizon line -->
+          <rect x="0" y="200" width="280" height="160" fill="#D4D1CB"/>
+          <line x1="0" y1="200" x2="280" y2="200" stroke="#B8B4AE" stroke-width="0.6"/>
+          <!-- Terrain contours -->
+          <path d="M 0 200 Q 70 160 140 175 Q 210 190 280 165" fill="none" stroke="#B0ADA8" stroke-width="0.5" stroke-dasharray="6 4"/>
+          <path d="M 0 185 Q 60 150 120 160 Q 180 170 280 145" fill="none" stroke="#B0ADA8" stroke-width="0.4" stroke-dasharray="6 4"/>
+          <!-- Building footprints (site plan language) -->
+          <rect x="40" y="100" width="70" height="80" fill="none" stroke="#9A9A98" stroke-width="0.7"/>
+          <rect x="130" y="120" width="60" height="60" fill="none" stroke="#9A9A98" stroke-width="0.7"/>
+          <rect x="55" y="215" width="90" height="55" fill="none" stroke="#9A9A98" stroke-width="0.7" stroke-dasharray="4 3"/>
+          <!-- Access route -->
+          <line x1="140" y1="360" x2="105" y2="215" stroke="#B0ADA8" stroke-width="1.5"/>
+          <line x1="145" y1="360" x2="110" y2="215" stroke="#B0ADA8" stroke-width="1.5"/>
+          <!-- Teal accent — structural indicator, left edge of primary footprint -->
+          <rect x="40" y="100" width="2" height="80" fill="#1D9E75" opacity="0.55"/>
+          <!-- Scale bar -->
+          <line x1="20" y1="336" x2="60" y2="336" stroke="#9A9A98" stroke-width="0.5"/>
+          <line x1="20" y1="333" x2="20" y2="339" stroke="#9A9A98" stroke-width="0.5"/>
+          <line x1="60" y1="333" x2="60" y2="339" stroke="#9A9A98" stroke-width="0.5"/>
+          <!-- Title block — D2 drawing convention -->
+          <rect x="0" y="342" width="280" height="18" fill="#E0DDD8"/>
+          <text x="10" y="353" font-family="DM Sans,sans-serif" font-size="6" fill="#9A9A98" letter-spacing="1.2" font-weight="300">RESILIENT INFRASTRUCTURE</text>
+          <text x="270" y="353" text-anchor="end" font-family="DM Sans,sans-serif" font-size="6" fill="#C8C4B8" letter-spacing="0.8" font-weight="300">Site context</text>
+        </svg>

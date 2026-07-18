@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Spirea Platform — Strategic Applications · D3 Remote Distributed -->
+<!-- D2 Brand System · © 2026 Spirea Platform · Transparent background -->
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 280 360" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Remote community — distributed deployment context">
+          <title>Remote deployment — community scale</title>
+          <defs>
+            <pattern id="t3" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#C0BDB7" stroke-width="0.3"/>
+            </pattern>
+          </defs>
+          <rect width="280" height="360" fill="#CCCAC3"/>
+          <rect width="280" height="360" fill="url(#t3)"/>
+          <!-- Wide landscape: horizon high up -->
+          <rect x="0" y="240" width="280" height="120" fill="#C2C0BA"/>
+          <line x1="0" y1="240" x2="280" y2="240" stroke="#ACA9A3" stroke-width="0.7"/>
+          <!-- Terrain lines (contours) -->
+          <path d="M 0 240 Q 70 220 140 230 Q 200 240 280 218" fill="none" stroke="#A8A5A0" stroke-width="0.5" stroke-dasharray="8 5"/>
+          <path d="M 0 200 Q 90 180 160 190 Q 220 200 280 175" fill="none" stroke="#A8A5A0" stroke-width="0.4" stroke-dasharray="8 5"/>
+          <path d="M 0 160 Q 100 140 170 152 Q 230 165 280 138" fill="none" stroke="#ACA9A3" stroke-width="0.4" stroke-dasharray="8 5"/>
+          <!-- Distant settlement: small marks -->
+          <rect x="80" y="215" width="18" height="14" fill="none" stroke="#9A9A98" stroke-width="0.6"/>
+          <rect x="104" y="218" width="14" height="11" fill="none" stroke="#9A9A98" stroke-width="0.6"/>
+          <rect x="124" y="215" width="18" height="14" fill="none" stroke="#9A9A98" stroke-width="0.6"/>
+          <rect x="148" y="218" width="14" height="11" fill="none" stroke="#9A9A98" stroke-width="0.6"/>
+          <!-- Supply route (dotted) -->
+          <line x1="140" y1="360" x2="115" y2="240" stroke="#ACA9A3" stroke-width="1.2" stroke-dasharray="6 4"/>
+          <!-- Distance annotation -->
+          <line x1="20" y1="260" x2="20" y2="315" stroke="#9A9A98" stroke-width="0.4"/>
+          <line x1="17" y1="260" x2="23" y2="260" stroke="#9A9A98" stroke-width="0.4"/>
+          <line x1="17" y1="315" x2="23" y2="315" stroke="#9A9A98" stroke-width="0.4"/>
+          <text x="35" y="292" font-family="DM Sans,sans-serif" font-size="6.5" fill="#9A9A98" letter-spacing="1">Supply gap</text>
+          <!-- Compass rose: minimal -->
+          <circle cx="248" cy="48" r="12" fill="none" stroke="#ACA9A3" stroke-width="0.5"/>
+          <line x1="248" y1="38" x2="248" y2="36" stroke="#9A9A98" stroke-width="0.6"/>
+          <text x="248" y="33" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="5.5" fill="#9A9A98">N</text>
+          <!-- Teal accent on settlement cluster — primary building -->
+          <rect x="80" y="215" width="2" height="14" fill="#1D9E75" opacity="0.55"/>
+          <!-- Title block -->
+          <rect x="0" y="342" width="280" height="18" fill="#E0DDD8"/>
+          <text x="10" y="353" font-family="DM Sans,sans-serif" font-size="6" fill="#9A9A98" letter-spacing="1.2" font-weight="300">REMOTE &amp; DISTRIBUTED</text>
+          <text x="270" y="353" text-anchor="end" font-family="DM Sans,sans-serif" font-size="6" fill="#C8C4B8" letter-spacing="0.8" font-weight="300">Site context</text>
+        </svg>

@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  /* Register your custom background color and font */
+  --font-sans: 'DM Sans', sans-serif;
+  --color-bg-base: #F0EDE8;
+  --color-text-base: #3A3A38;
+
+  /* Register your custom D2 pulse animation */
+  --animate-sp-pulse: sp-pulse 2.4s ease-in-out infinite;
+
+  @keyframes sp-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.35; }
+  }
+}
+
+/* Global base styles */
+@utility html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@utility body {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  background-color: var(--color-bg-base);
+  color: var(--color-text-base);
+}
+
+/* Custom Utilities */
+@utility arc-corner {
+  border-radius: 0 0 120px 0; 
+  overflow: hidden; 
+}
+
+@utility arc-corner-sm {
+  border-radius: 0 0 80px 0;  
+  overflow: hidden; 
+}
+
+@utility v1-grid-bg {
+  background-image:
+    repeating-linear-gradient(
+      0deg, transparent, transparent 31px,
+      rgba(180,176,168,0.09) 31px, rgba(180,176,168,0.09) 32px
+    ),
+    repeating-linear-gradient(
+      90deg, transparent, transparent 31px,
+      rgba(180,176,168,0.09) 31px, rgba(180,176,168,0.09) 32px
+    );
+}
+
+/* Responsive Overrides (Using standard CSS) */
+@media (max-width: 767px) {
+  .desktop-nav { display: none !important; }
+  .mobile-menu-btn { display: flex !important; }
+}
+@media (min-width: 768px) {
+  .mobile-menu-btn { display: none !important; }
+}
