@@ -7,7 +7,7 @@ import Contact from './pages/Contact';
 
 export default function App() {
   return (
-    <BrowserRouter basename="/spirea-platform">
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/prototype-v1" element={<PrototypeV1 />} />
