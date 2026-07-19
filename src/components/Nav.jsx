@@ -30,7 +30,7 @@ export default function Nav({ bg = '#F7F5F2' }) {
         className="flex items-center justify-between"
         style={{ padding: '0 52px', height: 62 }}
       >
-        <Link to="/" aria-label="Spirea Platform home" className="no-underline">
+        <Link to="/" aria-label="Spirea Platform home">
           <D2Lockup variant="primary" size={34} />
         </Link>
 
