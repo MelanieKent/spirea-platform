@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import PrototypeV1 from './pages/PrototypeV1';
 import StrategicApplications from './pages/StrategicApplications';
@@ -7,7 +7,7 @@ import Contact from './pages/Contact';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/prototype-v1" element={<PrototypeV1 />} />
@@ -15,6 +15,6 @@ export default function App() {
         <Route path="/founder" element={<Founder />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }

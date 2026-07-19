@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 /**
  * Shared UI Components — Spirea Platform
  *
@@ -76,9 +77,9 @@ export function BtnPrimary({ children, href, onClick, style = {} }) {
 
   if (href) {
     return (
-      <a href={href} style={baseStyle}>
+      <Link to={href} style={baseStyle}>
         {children}
-      </a>
+      </Link>
     );
   }
   return (
@@ -120,9 +121,9 @@ export function BtnGhost({ children, href, dark = true }) {
   };
 
   return (
-    <a href={href} style={style}>
+    <Link to={href} style={style}>
       {children}
-    </a>
+    </Link>
   );
 }
 
