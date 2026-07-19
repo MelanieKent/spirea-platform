@@ -29,7 +29,7 @@ export default function Contact() {
             <D2Logo variant="primary" size={60} ariaLabel="Spirea Platform" />
           </div>
 
-          <h1 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(28px,4vw,44px)', color: '#1A1A18', marginBottom: 14, lineHeight: 1.15 }}>
+          <h1 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(28px,4vw,44px)', color: '#1A1A18', marginBottom: 14, lineHeight: 1.15, fontWeight: 700 }}>
             Get in touch.
           </h1>
           <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 13, color: '#6A6A68', lineHeight: 1.82, maxWidth: 400, margin: '0 auto 48px' }}>

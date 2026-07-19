@@ -123,7 +123,7 @@ export default function Home() {
               Integrated Construction Platform
             </span>
           </div>
-          <h1 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(32px,4.6vw,54px)', fontWeight: 400, lineHeight: 1.1, color: 'rgba(255,255,255,0.92)', letterSpacing: '-0.01em', marginBottom: 24 }}>
+          <h1 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(32px,4.6vw,54px)', fontWeight: 600, lineHeight: 1.1, color: 'rgba(255,255,255,0.92)', letterSpacing: '-0.01em', marginBottom: 24 }}>
             A new operating system<br />
             for <em style={{ fontStyle: 'italic', color: 'rgba(255,255,255,0.52)' }}>construction.</em>
           </h1>
@@ -141,7 +141,7 @@ export default function Home() {
       <section style={{ background: '#F0EDE8', padding: '72px 64px' }}>
         <SectionDivider label="Why Spirea exists" />
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.25fr', gap: 72, alignItems: 'start' }}>
-          <h2 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(22px,2.8vw,34px)', color: '#1A1A18', lineHeight: 1.25, letterSpacing: '-0.01em' }}>
+          <h2 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(22px,2.8vw,34px)', color: '#1A1A18', fontWeight: 700, lineHeight: 1.25, letterSpacing: '-0.01em' }}>
             Construction has not been engineered as an integrated system.
           </h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -159,7 +159,7 @@ export default function Home() {
       {/* ── PLATFORM FRAMEWORK ── */}
       <section style={{ background: '#F7F5F2', borderTop: '0.5px solid #E0DDD8', borderBottom: '0.5px solid #E0DDD8', padding: '64px 64px' }}>
         <SectionDivider label="Platform framework" />
-        <h2 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(22px,2.8vw,34px)', color: '#1A1A18', lineHeight: 1.25, marginBottom: 16 }}>
+        <h2 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(22px,2.8vw,34px)', fontWeight: 700, color: '#1A1A18', lineHeight: 1.25, marginBottom: 16 }}>
           Four engines. One platform.
         </h2>
         <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 13.5, color: '#6A6A68', lineHeight: 1.87, maxWidth: 540, marginBottom: 40 }}>
@@ -174,11 +174,11 @@ export default function Home() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', border: '0.5px solid #E0DDD8' }}>
           {ENGINES.map((p, i) => (
             <div key={i} style={{ padding: '28px 22px', borderRight: i < 3 ? '0.5px solid #E0DDD8' : 'none' }}>
-              <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 14, display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 600, fontSize: 8, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 14, display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span style={{ display: 'inline-block', width: 16, height: 1, background: '#1D9E75', flexShrink: 0 }} aria-hidden="true" />
                 {p.label}
               </div>
-              <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: 19, color: '#1A1A18', marginBottom: 10, lineHeight: 1.2 }}>{p.title}</div>
+              <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: 19, fontWeight: 550, color: '#1A1A18', marginBottom: 10, lineHeight: 1.2 }}>{p.title}</div>
               <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 12, color: '#6A6A68', lineHeight: 1.82 }}>{p.body}</p>
             </div>
           ))}
@@ -190,7 +190,7 @@ export default function Home() {
         <SectionDivider label="Development program" dark />
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'start', marginBottom: 40 }}>
           <div>
-            <h2 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(22px,2.8vw,34px)', color: 'rgba(255,255,255,0.9)', lineHeight: 1.25, marginBottom: 16 }}>
+            <h2 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(22px,2.8vw,34px)', fontWeight: 700, color: 'rgba(255,255,255,0.9)', lineHeight: 1.25, marginBottom: 16 }}>
               Building the foundation for validation.
             </h2>
             <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 13.5, color: 'rgba(255,255,255,0.42)', lineHeight: 1.87 }}>
@@ -217,7 +217,7 @@ export default function Home() {
           {DEV_CELLS.map((cell, i) => (
             <div key={i} style={{ background: '#1A1A18', padding: '26px 22px' }}>
               <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)', marginBottom: 8 }}>{cell.tag}</div>
-              <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: 17, color: 'rgba(255,255,255,0.82)', marginBottom: 8, lineHeight: 1.2 }}>{cell.name}</div>
+              <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: 17, fontWeight: 600, color: 'rgba(255,255,255,0.82)', marginBottom: 8, lineHeight: 1.2 }}>{cell.name}</div>
               <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 11.5, color: 'rgba(255,255,255,0.36)', lineHeight: 1.77, marginBottom: 10 }}>{cell.body}</p>
               <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
                 <StatusDot variant={cell.dotVariant} size={5} />
@@ -232,7 +232,7 @@ export default function Home() {
       <section style={{ background: '#F0EDE8', borderTop: '0.5px solid #E0DDD8', padding: '72px 64px' }}>
         <SectionDivider label="Strategic applications" />
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'start', marginBottom: 36 }}>
-          <h2 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(22px,2.8vw,34px)', color: '#1A1A18', lineHeight: 1.25 }}>
+          <h2 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(22px,2.8vw,34px)', fontWeight: 700, color: '#1A1A18', lineHeight: 1.25 }}>
             Where the platform may be deployed.
           </h2>
           <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 13.5, color: '#6A6A68', lineHeight: 1.87 }}>
@@ -243,7 +243,7 @@ export default function Home() {
           {APPS_PREVIEW.map((app, i) => (
             <div key={i} style={{ borderTop: '1px solid #E0DDD8', paddingTop: 22 }}>
               <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 10 }}>{app.num}</div>
-              <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: 19, color: '#1A1A18', marginBottom: 8, lineHeight: 1.2 }}>{app.title}</div>
+              <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: 19, color: '#1A1A18', marginBottom: 8, lineHeight: 1.2, fontWeight: 550 }}>{app.title}</div>
               <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 12, color: '#6A6A68', lineHeight: 1.78 }}>{app.body}</p>
             </div>
           ))}
@@ -254,7 +254,7 @@ export default function Home() {
       <div style={{ background: '#F7F5F2', borderTop: '0.5px solid #E0DDD8', padding: '64px 64px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 40, flexWrap: 'wrap' }}>
         <div>
           <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, letterSpacing: '0.32em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 12 }}>Collaboration &amp; development</div>
-          <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: 22, color: '#1A1A18', lineHeight: 1.35, marginBottom: 10, maxWidth: 500 }}>
+          <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: 22, color: '#1A1A18', lineHeight: 1.35, marginBottom: 10, maxWidth: 500, fontWeight: 550 }}>
             Spirea Platform welcomes collaboration, research, validation, and strategic development discussions.
           </div>
           <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 12.5, color: '#6A6A68', lineHeight: 1.78, maxWidth: 440 }}>

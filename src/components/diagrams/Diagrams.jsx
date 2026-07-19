@@ -97,10 +97,9 @@ export function PlatformFrameworkDiagram() {
       {/* Right-side note */}
       <rect x="375" y="182" width="375" height="76" fill="none" stroke="#D8D5CF" strokeWidth="0.5" rx="1"/>
       <text x="390" y="198" fontFamily="DM Sans,sans-serif" fontSize="6.5" fill="#9A9A98" letterSpacing="2" fontWeight="300">WHY THIS MATTERS</text>
-      <text x="390" y="216" fontFamily="DM Sans,sans-serif" fontSize="6.5" fill="#6A6A68" fontWeight="300">Prototype V1 is the first output of a permanent</text>
-      <text x="390" y="230" fontFamily="DM Sans,sans-serif" fontSize="6.5" fill="#6A6A68" fontWeight="300">platform, not a one-off project. Validation,</text>
-      <text x="390" y="244" fontFamily="DM Sans,sans-serif" fontSize="6.5" fill="#6A6A68" fontWeight="300">commercialization, and knowledge do not reset —</text>
-      <text x="390" y="258" fontFamily="DM Sans,sans-serif" fontSize="6.5" fill="#6A6A68" fontWeight="300">each prototype is faster and cheaper than the last.</text>
+      <text x="390" y="216" fontFamily="DM Sans,sans-serif" fontSize="6.5" fill="#6A6A68" fontWeight="300">Prototype V1 is the first output of a permanent platform,</text>
+      <text x="390" y="230" fontFamily="DM Sans,sans-serif" fontSize="6.5" fill="#6A6A68" fontWeight="300">not a one-off project. Validation, commercialization, and</text>
+      <text x="390" y="244" fontFamily="DM Sans,sans-serif" fontSize="6.5" fill="#6A6A68" fontWeight="300">knowledge do not reset — each prototype is faster and cheaper than the last.</text>
 
       {/* Title block */}
       <rect x="0" y="264" width="800" height="36" fill="#F0EDE8"/>

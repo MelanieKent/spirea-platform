@@ -80,7 +80,7 @@ export default function StrategicApplications() {
         {/* ── HERO ── */}
         <section style={{ padding: '72px 64px 56px', borderBottom: '0.5px solid #E0DDD8' }}>
           <SectionDivider label="Strategic applications" />
-          <h1 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(28px,4vw,48px)', color: '#1A1A18', lineHeight: 1.1, letterSpacing: '-0.015em', maxWidth: 580, marginBottom: 16 }}>
+          <h1 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(28px,4vw,48px)', color: '#1A1A18', lineHeight: 1.1, letterSpacing: '-0.015em', maxWidth: 580, marginBottom: 16, fontWeight: 700 }}>
             Where Spirea may be deployed.
           </h1>
           <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 13.5, color: '#6A6A68', lineHeight: 1.82, maxWidth: 480 }}>
@@ -102,7 +102,7 @@ export default function StrategicApplications() {
               {/* Left: text */}
               <div>
                 <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, letterSpacing: '0.35em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 12 }}>{d.num}</div>
-                <h2 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 25, color: '#1A1A18', lineHeight: 1.2, marginBottom: 7 }}>{d.title}</h2>
+                <h2 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 25, color: '#1A1A18', lineHeight: 1.2, marginBottom: 7, fontWeight: 550 }}>{d.title}</h2>
                 <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1D9E75', marginBottom: 22 }}>{d.sub}</div>
                 {d.body.map((para, j) => (
                   <p key={j} style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 13, color: '#6A6A68', lineHeight: 1.87, marginBottom: j < d.body.length - 1 ? 14 : 0 }}>{para}</p>
@@ -128,7 +128,7 @@ export default function StrategicApplications() {
         {/* ── CLOSING ── */}
         <section style={{ background: '#1A1A18', padding: '72px 64px' }}>
           <SectionDivider label="Platform vision" dark />
-          <h2 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(22px,3vw,36px)', color: 'rgba(255,255,255,0.82)', lineHeight: 1.4, maxWidth: 580, marginBottom: 14 }}>
+          <h2 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(22px,3vw,36px)', color: 'rgba(255,255,255,0.82)', lineHeight: 1.0, maxWidth: 600, marginBottom: 14, fontWeight: 700 }}>
             The platform exists to serve conditions where conventional construction has not found an adequate answer.
           </h2>
           <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 13, color: 'rgba(255,255,255,0.36)', lineHeight: 1.82, maxWidth: 480 }}>

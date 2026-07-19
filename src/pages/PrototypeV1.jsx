@@ -94,7 +94,7 @@ export default function PrototypeV1() {
           <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', paddingBottom: 18, borderBottom: '0.5px solid #E0DDD8', marginBottom: 28, position: 'relative', zIndex: 1 }}>
             <div>
               <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, letterSpacing: '0.36em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 5 }}>Prototype V1 — Development Program</div>
-              <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: '1.25rem', color: '#1A1A18' }}>Construction System Development</div>
+              <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: '1.25rem', color: '#1A1A18', fontWeight: 550 }}>Construction System Development</div>
             </div>
             <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, color: '#9A9A98', textAlign: 'right', lineHeight: 2.1 }}>
               <div>Program stage &nbsp;<span style={{ color: '#1D9E75' }}>02 / Lean Lab Setup</span></div>
@@ -106,7 +106,7 @@ export default function PrototypeV1() {
           {/* Hero statement */}
           <div style={{ background: '#fff', border: '0.5px solid #E0DDD8', borderLeft: '2px solid #1D9E75', padding: '22px 26px', marginBottom: 26, position: 'relative', zIndex: 1 }}>
             <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 7, letterSpacing: '0.34em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 9 }}>Development & Validation Program</div>
-            <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: '1.01rem', color: '#1A1A18', lineHeight: 1.65, maxWidth: 560 }}>
+            <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: '1.01rem', color: '#1A1A18', lineHeight: 1.65, maxWidth: 560, fontWeight: 550 }}>
               Prototype V1 is being developed through a staged engineering and validation program designed to support future independent review and regulatory readiness.
             </div>
             <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8.5, color: '#6A6A68', lineHeight: 1.75, marginTop: 11, maxWidth: 510 }}>
@@ -221,7 +221,7 @@ export default function PrototypeV1() {
                 <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 7, letterSpacing: '0.26em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 10 }}>Development principles</div>
                 {PRINCIPLES.map((text, i) => (
                   <div key={i} style={{ display: 'flex', gap: 6, alignItems: 'flex-start', marginBottom: i < PRINCIPLES.length - 1 ? 7 : 0 }}>
-                    <span style={{ width: 1, background: '#1D9E75', flexShrink: 0, marginTop: 2, alignSelf: 'stretch' }} aria-hidden="true" />
+                    <span style={{ width: 0.8, background: '#1D9E75', flexShrink: 0, marginTop: 2, alignSelf: 'stretch' }} aria-hidden="true" />
                     <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, color: '#6A6A68', lineHeight: 1.6, margin: 0 }}>{text}</p>
                   </div>
                 ))}

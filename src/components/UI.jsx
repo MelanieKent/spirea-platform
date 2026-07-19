@@ -140,8 +140,8 @@ export function StatusDot({ variant = 'teal', size = 7 }) {
     teal:         { background: '#1D9E75' },
     amber:        { background: '#BA7517' },
     dark:         { background: '#2C2C2A' },
-    grey:         { background: '#E0DDD8', border: '0.5px solid #C8C4B8' },
-    'outline-teal': { background: '#fff', border: '1.5px solid #1D9E75' },
+    grey:         { background: '#2C2C2A', border: '0.5px solid #55544fff' },
+    'outline-teal': { background: '#2C2C2A', border: '1.5px solid #1D9E75' },
   };
 
   return (

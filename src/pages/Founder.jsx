@@ -50,7 +50,7 @@ export default function Founder() {
             <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, letterSpacing: '0.36em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 16 }}>
               Julia Liu · Founder
             </div>
-            <h1 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(24px,3vw,38px)', color: '#1A1A18', lineHeight: 1.2, letterSpacing: '-0.01em', marginBottom: 22 }}>
+            <h1 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(24px,3vw,38px)', color: '#1A1A18', lineHeight: 1.2, letterSpacing: '-0.01em', marginBottom: 22, fontWeight: 700 }}>
               The convergence of supply chain systems, material science, and construction.
             </h1>
             <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 13.5, color: '#6A6A68', lineHeight: 1.87, maxWidth: 430 }}>
@@ -112,7 +112,7 @@ export default function Founder() {
                   <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 9, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#1D9E75', marginBottom: 5 }}>
                     {item.org}
                   </div>
-                  <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: 17, color: '#1A1A18', marginBottom: 8, lineHeight: 1.2 }}>
+                  <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: 17, color: '#1A1A18', marginBottom: 8, lineHeight: 1.2, fontWeight: 550 }}>
                     {item.role}
                   </div>
                   <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 12.5, color: '#6A6A68', lineHeight: 1.82 }}>
@@ -126,7 +126,7 @@ export default function Founder() {
 
         {/* ── CLOSING QUOTE ── */}
         <section style={{ padding: '56px 64px', background: '#F0EDE8', borderTop: '0.5px solid #E0DDD8', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72, alignItems: 'center' }}>
-          <blockquote style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(19px,2.2vw,26px)', fontStyle: 'italic', color: '#1A1A18', lineHeight: 1.5, margin: 0 }}>
+          <blockquote style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(19px,2.2vw,26px)', fontStyle: 'italic', color: '#1A1A18', lineHeight: 1.5, margin: 0, fontWeight: 550 }}>
             "Construction is a systems problem. It has been treated as a procurement problem for too long."
           </blockquote>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
