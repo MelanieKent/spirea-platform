@@ -1,13 +1,17 @@
 /**
- * Nav — Spirea Platform sticky navigation
+ * Nav — Spirea Platform sticky navigation (v5)
  *
  * Props:
- *   bg        — background colour (Tailwind class or CSS value). Default: chalk.
- *   activePage — one of: 'home' | 'prototype-v1' | 'strategic-applications' | 'founder' | 'contact'
+ *   bg — background colour. Default: chalk. Per page: Home chalk, Prototype V1 white,
+ *        Strategic Applications limestone, Founder chalk, Contact white.
+ *
+ * Mobile (768px and below): the link list is replaced by a 44 × 44px menu button.
+ * The open panel is a full-width list under the bar; it closes on selection or route change.
+ * Styles live in globals.css (.nav-links, .nav-toggle, nav.open).
  */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { D2Lockup } from './D2Logo';
+import { D2Logo } from './D2Logo';
 
 const NAV_ITEMS = [
   { label: 'Home',                   to: '/' },
@@ -21,91 +25,43 @@ export default function Nav({ bg = '#F7F5F2' }) {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
 
+  // Close the mobile panel whenever the route changes.
+  useEffect(() => { setOpen(false); }, [pathname]);
+
   return (
-    <nav
-      className="sticky top-0 z-50 border-b"
-      style={{ background: bg, borderBottomColor: '#E0DDD8', borderBottomWidth: '0.5px' }}
-    >
-      <div
-        className="flex items-center justify-between"
-        style={{ padding: '0 52px', height: 62 }}
-      >
-        <Link to="/" aria-label="Spirea Platform home">
-          <D2Lockup variant="primary" size={34} />
-        </Link>
-
-        {/* Desktop nav */}
-        <ul className="desktop-nav flex gap-7 list-none m-0 p-0">
-          {NAV_ITEMS.map((item) => {
-            const isActive = pathname === item.to;
-            return (
-              <li key={item.to}>
-                <Link
-                  to={item.to}
-                  style={{
-                    fontFamily: '"DM Sans", sans-serif',
-                    fontWeight: 300,
-                    fontSize: 11,
-                    letterSpacing: '0.12em',
-                    textTransform: 'uppercase',
-                    color: isActive ? '#1A1A18' : '#6A6A68',
-                    textDecoration: 'none',
-                    borderBottom: isActive ? '1px solid #1D9E75' : 'none',
-                    paddingBottom: isActive ? 1 : 0,
-                    transition: 'color 0.14s',
-                  }}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* Mobile hamburger */}
-        <button
-          className="mobile-menu-btn flex-col gap-1 p-1 bg-transparent border-none cursor-pointer"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle navigation"
-          aria-expanded={open}
-        >
-          {[0, 1, 2].map((i) => (
-            <span
-              key={i}
-              style={{ display: 'block', width: 20, height: 1.5, background: '#1A1A18', marginBottom: i < 2 ? 4 : 0 }}
-            />
-          ))}
-        </button>
-      </div>
-
-      {/* Mobile drawer */}
-      {open && (
-        <div
-          style={{ background: bg, borderTop: '0.5px solid #E0DDD8', padding: '16px 24px 24px' }}
-        >
-          <ul className="list-none m-0 p-0 flex flex-col gap-4">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.to}>
-                <Link
-                  to={item.to}
-                  onClick={() => setOpen(false)}
-                  style={{
-                    fontFamily: '"DM Sans", sans-serif',
-                    fontWeight: 300,
-                    fontSize: 12,
-                    letterSpacing: '0.12em',
-                    textTransform: 'uppercase',
-                    color: pathname === item.to ? '#1A1A18' : '#6A6A68',
-                    textDecoration: 'none',
-                  }}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+    <nav className={open ? 'open' : ''} style={{ background: bg }}>
+      <Link to="/" className="logo-wrap" aria-label="Spirea Platform home">
+        <D2Logo variant="primary" size={36} ariaLabel="" />
+        <div className="logo-text">
+          <span className="n">Spirea</span>
+          <span className="s">Platform</span>
         </div>
-      )}
+      </Link>
+
+      <ul id="site-nav-links" className="nav-links">
+        {NAV_ITEMS.map((item) => (
+          <li key={item.to}>
+            <Link
+              to={item.to}
+              className={pathname === item.to ? 'on' : undefined}
+              aria-current={pathname === item.to ? 'page' : undefined}
+            >
+              {item.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+
+      <button
+        type="button"
+        className="nav-toggle"
+        aria-label="Open menu"
+        aria-expanded={open}
+        aria-controls="site-nav-links"
+        onClick={() => setOpen((o) => !o)}
+      >
+        <span /><span /><span />
+      </button>
     </nav>
   );
 }

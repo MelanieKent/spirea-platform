@@ -9,8 +9,8 @@
  *   'primary'  — dark rings (#2a2a28 / #6a6a68 / #c0beb6), teal core
  *                Use on: nav, letterhead, business cards, light backgrounds
  *   'reversed' — all limestone rings (#F0EDE8), teal core (not used in current site)
- *   'footer'   — teal core, muted rings for dark backgrounds (#c8c6bc / #555 / #2c2c2a)
- *                Use on: site footer (#1A1A18 background)
+ *   'footer'   — DEPRECATED in v5. Legacy light-on-dark variant (#c8c6bc / #555 / #2c2c2a).
+ *                The v5 footer sits on Chalk, so it now uses 'primary'. Kept for compatibility only.
  *   'mono'     — all black (#111111), for single-colour print
  *
  * Size: pass as pixels; SVG renders at that exact size (viewBox is always 0 0 100 100)
@@ -52,8 +52,9 @@ export function D2Logo({ variant = 'primary', size = 36, className = '', ariaLab
       height={size}
       viewBox="0 0 100 100"
       fill="none"
-      role="img"
-      aria-label={ariaLabel}
+      role={ariaLabel ? 'img' : undefined}
+      aria-label={ariaLabel || undefined}
+      aria-hidden={ariaLabel ? undefined : 'true'}
       className={className}
     >
       {/* Teal core dot — origin of the spiral */}
@@ -94,10 +95,10 @@ export function D2Logo({ variant = 'primary', size = 36, className = '', ariaLab
 
 /**
  * D2LogoBg — Arc geometry without the core dot, for use as ambient hero background.
- * Positioned absolute, opacity ~0.04, in the homepage hero section only.
+ * Positioned absolute, opacity ~0.07 (v5, light hero), in the homepage hero section only.
  * Per brand doc: "the underlying geometry made architectural."
  */
-export function D2LogoBg({ size = 420, color = '#F0EDE8', opacity = 0.04, className = '' }) {
+export function D2LogoBg({ size = 420, color = '#6A6A68', opacity = 0.07, className = '' }) {
   return (
     <svg
       width={size}
@@ -140,6 +141,11 @@ export function D2LogoBg({ size = 420, color = '#F0EDE8', opacity = 0.04, classN
  * D2Lockup — mark + wordmark horizontal lockup.
  * Used in: navigation header (all pages).
  */
+// Letter-spacing of the "Platform" sub-label. The approved logo uses 0.32em.
+// The v5 preview CSS tightened it to 0.2em; this is flagged for Julia (README, open item 5),
+// so the approved value is kept here until she confirms.
+const SUB_LETTER_SPACING = '0.32em';
+
 export function D2Lockup({ variant = 'primary', size = 36 }) {
   const wordColor  = variant === 'reversed' || variant === 'footer' ? '#F0EDE8' : '#1A1A18';
   const subColor   = variant === 'reversed' || variant === 'footer' ? 'rgba(240,237,232,0.5)' : '#9A9A98';
@@ -165,7 +171,7 @@ export function D2Lockup({ variant = 'primary', size = 36 }) {
             fontFamily: '"DM Sans", sans-serif',
             fontWeight: 300,
             fontSize: 7,
-            letterSpacing: '0.32em',
+            letterSpacing: SUB_LETTER_SPACING,
             textTransform: 'uppercase',
             color: subColor,
             marginTop: 2,

@@ -1,72 +1,67 @@
 /**
- * StrategicApplications — Spirea Platform
+ * Strategic Applications (handoff v5)
  *
- * Background: limestone (#F0EDE8) with chalk (#F7F5F2) on alternate domains
- * Three domains, each with left-column text + right-column SVG diagram
- * D2 arc corner treatment on all diagram containers
- * Dark closing statement band
- *
- * Diagrams are imported as separate JSX components (inline SVG)
- * and also available as standalone assets in src/assets/diagrams/
+ * Limestone page. Three future deployment domains with arc-corner schematic panels.
+ * Even-numbered domain sections switch to chalk via CSS (.domain:nth-child(even)).
+ * All applications are contingent on Prototype V1 validation — keep that language.
+ * No insulation, performance or schedule claims beyond the approved wording.
  */
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import { SectionDivider } from '../components/UI';
-import D1ResilienceMap    from '../components/diagrams/D1ResilienceMap';
-import D2DeploymentGrid  from '../components/diagrams/D2DeploymentGrid';
-import D3RemoteMap       from '../components/diagrams/D3RemoteMap';
+import { D1ResilienceMap, D2DeploymentGrid, D3RemoteMap } from '../components/diagrams/Diagrams';
 
 const DOMAINS = [
   {
-    num:        'Domain 01',
-    title:      'Resilient Infrastructure Systems',
-    sub:        'Performance across conditions',
+    num: 'Domain 01',
+    title: 'Resilient Infrastructure Systems',
+    sub: 'Performance across conditions',
     body: [
-      'The built environment faces increasing demands for performance consistency across extreme and variable conditions — cold climates, high humidity, seismic zones, and sustained environmental stress. Conventional construction systems do not address these conditions at the system level. Components may perform individually; the integrated assembly does not perform predictably.',
-      'Spirea addresses this at the design stage — material selection, production method, and assembly logic are chosen together for the deployment condition, not assembled after independent specification.',
+      'Buildings in cold, humid and seismic regions must perform reliably over many years. Established practice meets these demands well on many projects. Spirea is exploring whether choosing materials, fabrication method and assembly together could add further options.',
+      'Any performance benefit would need to be demonstrated through testing, engineering review and the relevant approvals.',
     ],
-    conditions: [
-      ['Climate range',  'Extreme cold to high humidity'],
-      ['Performance',    'Thermal, structural, durability'],
-      ['Application',    'Housing, institutional, infrastructure'],
-      ['Stage',          'Pending Prototype V1 validation'],
-    ],
-    bg:        '#F0EDE8',
-    Diagram:   D1ResilienceMap,
-  },
-  {
-    num:        'Domain 02',
-    title:      'Rapid Deployment Frameworks',
-    sub:        'Time-to-occupancy as a system property',
-    body: [
-      'Conventional construction timelines are determined by trade sequencing and site logistics, not by the inherent speed potential of building materials. A system designed for rapid deployment treats time as a design parameter — not a project management problem to solve after specification.',
-      "Spirea's modular production and assembly logic is intended to reduce time-to-occupancy by reducing trade dependencies at the site level. The speed gain is structural to the system.",
-    ],
-    conditions: [
-      ['Application',    'Emergency housing, rapid-response infrastructure'],
-      ['Key feature',    'Reduced on-site trade dependency'],
-      ['Priority',       'Time-to-occupancy, repeatability'],
-      ['Stage',          'Pending Prototype V1 validation'],
-    ],
-    bg:        '#F7F5F2',
-    Diagram:   D2DeploymentGrid,
-  },
-  {
-    num:        'Domain 03',
-    title:      'Remote & Distributed Development',
-    sub:        'Infrastructure where supply chains end',
-    body: [
-      'Remote communities, Indigenous nations, northern settlements, and strategic infrastructure locations face a common challenge: conventional construction supply chains are impractical, expensive, or simply absent. The result is a persistent gap between infrastructure need and infrastructure delivery.',
-      'A modular, factory-produced construction system with reduced on-site labour requirements changes the economics and logistics of building in remote conditions.',
-    ],
-    conditions: [
-      ['Geography',     'Northern Canada, remote communities'],
-      ['Application',   'Housing, community, strategic facilities'],
-      ['Key feature',   'Factory production, reduced site labour'],
+    cond: [
+      ['Climate range', 'Extreme cold to high humidity'],
+      ['Performance',   'Thermal, structural, durability'],
+      ['Application',   'Housing, institutional, infrastructure'],
       ['Stage',         'Pending Prototype V1 validation'],
     ],
-    bg:        '#F0EDE8',
-    Diagram:   D3RemoteMap,
+    bg: 'var(--dv)',
+    Diagram: D1ResilienceMap,
+  },
+  {
+    num: 'Domain 02',
+    title: 'Rapid Deployment Frameworks',
+    sub: 'Time-to-occupancy as a system property',
+    body: [
+      'Construction schedules depend on trade sequencing and site logistics. Spirea is exploring whether modular, factory-based production and assembly could reduce some site-level dependencies where speed matters.',
+      'Any schedule benefit is an objective to evaluate, not an established result.',
+    ],
+    cond: [
+      ['Application', 'Emergency housing, rapid-response infrastructure'],
+      ['Key feature', 'Reduced on-site trade dependency'],
+      ['Priority',    'Time-to-occupancy, repeatability'],
+      ['Stage',       'Pending Prototype V1 validation'],
+    ],
+    bg: '#CBCAC4',
+    Diagram: D2DeploymentGrid,
+  },
+  {
+    num: 'Domain 03',
+    title: 'Remote & Distributed Development',
+    sub: 'Infrastructure where supply chains end',
+    body: [
+      'Remote communities, northern settlements and strategic locations often face long supply chains and limited site labour. Housing with interested Indigenous communities and infrastructure for remote or defence-related settings are future directions Spirea intends to explore with suitable partners.',
+      'Factory-produced modular components with reduced on-site labour may suit these conditions, subject to demonstrated performance and application-specific approvals.',
+    ],
+    cond: [
+      ['Geography',   'Northern Canada, remote communities'],
+      ['Application', 'Housing, community, strategic facilities'],
+      ['Key feature', 'Factory production, reduced site labour'],
+      ['Stage',       'Pending Prototype V1 validation'],
+    ],
+    bg: '#D0CEC8',
+    Diagram: D3RemoteMap,
   },
 ];
 
@@ -75,67 +70,52 @@ export default function StrategicApplications() {
     <>
       <Nav bg="#F0EDE8" />
 
-      <div style={{ background: '#F0EDE8' }}>
-
-        {/* ── HERO ── */}
-        <section style={{ padding: '72px 64px 56px', borderBottom: '0.5px solid #E0DDD8' }}>
+      <div className="apps-page">
+        <div className="apps-hero">
           <SectionDivider label="Strategic applications" />
-          <h1 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(28px,4vw,48px)', color: '#1A1A18', lineHeight: 1.1, letterSpacing: '-0.015em', maxWidth: 580, marginBottom: 16, fontWeight: 700 }}>
+          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(28px,4vw,48px)', color: 'var(--di)', lineHeight: 1.1, letterSpacing: '-.015em', maxWidth: 580, marginBottom: 16 }}>
             Where Spirea may be deployed.
           </h1>
-          <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 13.5, color: '#6A6A68', lineHeight: 1.82, maxWidth: 480 }}>
-            The platform is being engineered for future deployment across contexts where conventional construction has not found an integrated answer.
+          <p className="sbody" style={{ maxWidth: 480, marginBottom: 0 }}>
+            Spirea is exploring future deployment contexts where an integrated approach to materials, fabrication and assembly may offer advantages.
           </p>
-          <div style={{ maxWidth: 530, background: '#F7F5F2', border: '0.5px solid #E0DDD8', borderLeft: '2px solid #1D9E75', padding: '12px 18px', marginTop: 28, fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 11, color: '#6A6A68', lineHeight: 1.72 }}>
+          <div className="apps-note">
             Applications described here represent intended future deployment domains, not current operational capability. Prototype V1 is under active development. All applications are contingent on successful validation and engineering review.
           </div>
-        </section>
+        </div>
 
-        {/* ── DOMAIN SECTIONS ── */}
-        {DOMAINS.map((d) => {
-          const { Diagram } = d;
-          return (
-            <section
-              key={d.num}
-              style={{ background: d.bg, borderBottom: '0.5px solid #E0DDD8', padding: '56px 64px', display: 'grid', gridTemplateColumns: '1fr 300px', gap: 56, alignItems: 'start' }}
-            >
-              {/* Left: text */}
-              <div>
-                <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, letterSpacing: '0.35em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 12 }}>{d.num}</div>
-                <h2 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 25, color: '#1A1A18', lineHeight: 1.2, marginBottom: 7, fontWeight: 550 }}>{d.title}</h2>
-                <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1D9E75', marginBottom: 22 }}>{d.sub}</div>
-                {d.body.map((para, j) => (
-                  <p key={j} style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 13, color: '#6A6A68', lineHeight: 1.87, marginBottom: j < d.body.length - 1 ? 14 : 0 }}>{para}</p>
+        {DOMAINS.map(({ num, title, sub, body, cond, bg, Diagram }) => (
+          <div key={num} className="domain">
+            <div>
+              <div className="domain-num">{num}</div>
+              <h2 className="domain-title">{title}</h2>
+              <div className="domain-sub">{sub}</div>
+              {body.map((t) => <p key={t} className="domain-body">{t}</p>)}
+              <div className="domain-cond">
+                {cond.map(([lbl, val]) => (
+                  <div key={lbl} className="dc-item">
+                    <div className="dc-lbl">{lbl}</div>
+                    <div className="dc-val">{val}</div>
+                  </div>
                 ))}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 13, marginTop: 20 }}>
-                  {d.conditions.map(([label, value]) => (
-                    <div key={label} style={{ borderTop: '0.5px solid #E0DDD8', paddingTop: 9 }}>
-                      <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 3 }}>{label}</div>
-                      <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 11.5, color: '#3A3A38', lineHeight: 1.5 }}>{value}</div>
-                    </div>
-                  ))}
-                </div>
               </div>
+            </div>
+            {/* Illustrative schematic panel — arc corner per brand document */}
+            <div className="img-arc" style={{ background: bg }}>
+              <Diagram />
+            </div>
+          </div>
+        ))}
 
-              {/* Right: diagram with D2 arc corner */}
-              <div style={{ borderRadius: '0 0 120px 0', overflow: 'hidden' }}>
-                <Diagram />
-              </div>
-            </section>
-          );
-        })}
-
-        {/* ── CLOSING ── */}
-        <section style={{ background: '#1A1A18', padding: '72px 64px' }}>
-          <SectionDivider label="Platform vision" dark />
-          <h2 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(22px,3vw,36px)', color: 'rgba(255,255,255,0.82)', lineHeight: 1.0, maxWidth: 600, marginBottom: 14, fontWeight: 700 }}>
-            The platform exists to serve conditions where conventional construction has not found an adequate answer.
+        <div className="apps-closing">
+          <SectionDivider label="Platform vision" />
+          <h2 className="sh rev" style={{ maxWidth: 580, marginBottom: 14 }}>
+            A longer-term direction for conditions where an integrated approach may help.
           </h2>
-          <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 13, color: 'rgba(255,255,255,0.36)', lineHeight: 1.82, maxWidth: 480 }}>
-            All applications are contingent on the successful development and validation of Prototype V1. Spirea Platform welcomes discussions with organisations working in these domains.
+          <p className="sbody" style={{ maxWidth: 480 }}>
+            All applications are contingent on the successful development and validation of Prototype V1. Spirea Platform welcomes discussions with organisations working in these domains, beginning with a focused pilot.
           </p>
-        </section>
-
+        </div>
       </div>
 
       <Footer />

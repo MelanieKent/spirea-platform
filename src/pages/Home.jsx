@@ -1,94 +1,115 @@
 /**
- * Home — Spirea Platform Homepage
+ * Home — Spirea Platform Homepage (handoff v5)
  *
- * Background strategy:
- *   Hero:           #1C1C1A (hero-dark) — only dark entry in the site
- *   Why section:    limestone (#F0EDE8)
- *   Platform:       chalk (#F7F5F2), bordered top/bottom
- *   Dev program:    deep-ink (#1A1A18) dark band
- *   Apps preview:   limestone
- *   Contact band:   chalk
+ * Background strategy (light design language — no dark sections):
+ *   Hero:                    chalk (#F7F5F2), 0.5px bottom rule
+ *   Why an integrated approach: limestone (#F0EDE8)
+ *   Platform framework:      chalk visual band, bordered top/bottom
+ *   Hemp printing research:  chalk, bordered top
+ *   Current development:     white (#fff)
+ *   Near-term applications:  limestone, bordered top
+ *   Longer-term applications: limestone, bordered top
+ *   Contact band:            chalk
  *
- * D2 arc geometry appears in hero at opacity 0.04 — top-right, position:absolute
- * Platform framework: inline SVG schematic (architectural drawing quality)
+ * Copy is approved and must be used exactly as written. Do not add insulation wording,
+ * performance or cost claims, or approvals. Photographs show completed Guan Li projects
+ * and equipment; they are not Spirea projects (see README, "Images and attribution").
  */
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import { D2LogoBg } from '../components/D2Logo';
-import { SectionDivider, BtnPrimary, BtnGhost, StatusDot } from '../components/UI';
+import { SectionDivider, BtnPrimary, BtnGhost, StatusDot, ArcImage } from '../components/UI';
 import PlatformFrameworkDiagram from '../components/diagrams/PlatformFrameworkDiagram';
+import printerPhoto from '../assets/images/spirea-small-spider-printer.jpg';
+import aerialPhoto  from '../assets/images/spirea-aerial-fabrication-reference.jpg';
 
 // ── DATA ───────────────────────────────────────────────────────────────────
-const ENGINES = [
+const WHY_PARAGRAPHS = [
+  'Spirea develops materials, fabrication methods and assembly together, so that each informs the others.',
+  'Spirea aims to explore what becomes possible when these are developed together: more design freedom through digital fabrication, lower-carbon material options such as hemp-based materials, and more repeatable assembly through modular systems.',
+  'These are objectives to evaluate, not established results.',
+];
+
+const PILLARS = [
   {
-    label: 'Technology Development',
-    title: 'Designs and builds every prototype.',
-    body: 'Printer, materials, wall architecture, and fabrication process — the engine that produces each successive prototype, from Prototype V1 through V2, V3, and beyond.',
+    label: 'Material Systems',
+    title: 'Hemp-based materials.',
+    body: 'Hemp-based printing materials are being developed with UBC. Material choices for each application will follow testing and engineering evidence.',
   },
   {
-    label: 'Validation',
-    title: 'Proves performance, earns acceptance.',
-    body: 'Structural, thermal, and regulatory validation for every prototype the technology engine produces — the evidence base that carries each design toward code acceptance.',
+    label: 'Production Systems',
+    title: 'Controlled digital fabrication.',
+    body: '3D printing offers controlled digital fabrication of complex shapes and details, subject to equipment commissioning, testing and quality control.',
   },
   {
-    label: 'Commercialization',
-    title: 'Converts prototypes into product.',
-    body: 'The path from a validated prototype to a manufacturable, sellable, installable construction system, ready for deployment beyond the laboratory.',
-  },
-  {
-    label: 'Knowledge',
-    title: 'Compounds with every cycle.',
-    body: 'Every print, test, and engineering decision captured as reusable intellectual capital, so each subsequent prototype starts ahead of the last.',
+    label: 'Deployment Systems',
+    title: 'Repeatable assembly.',
+    body: 'Modular assembly aims to make construction more repeatable across sites, from urban projects to remote locations, as the system is validated.',
   },
 ];
 
+const HEMP_CARDS = [
+  {
+    label: 'Long-term direction',
+    title: 'Hemp-based printing materials',
+    body: 'Printable materials that bring hemp’s environmental potential into digital fabrication, developed and tested with UBC. They follow their own research, testing and validation path.',
+    hemp: true,
+  },
+  {
+    label: 'Initial V1 demonstration',
+    title: 'Selected on readiness and evidence',
+    body: 'Guan Li’s premix adapted for BC conditions, or the hemp-based printing material, depending on readiness and engineering evidence.',
+  },
+];
+
+// dot: 'amber' = in preparation; 'teal' = under way
 const DEV_CELLS = [
   {
-    tag: 'Infrastructure',
-    name: 'Development Laboratory',
-    body: 'A dedicated facility for additive manufacturing development, material testing, and Prototype V1 fabrication. Sized to the validation programme, not to demonstrate scale.',
-    status: 'Establishment active',
-    dotVariant: 'teal',
-  },
-  {
     tag: 'Equipment',
-    name: 'Guan Li Spider — Procurement',
-    body: 'Additive manufacturing equipment for Prototype V1 fabrication. Procurement underway. Commissioning to follow laboratory establishment.',
-    status: 'Procurement underway',
-    dotVariant: 'amber',
+    name: 'Printers and mixing equipment',
+    body: 'Construction and table printers and mixing equipment have been manufactured. Shipment and commissioning are being prepared.',
+    status: 'Preparing for shipment and commissioning',
+    dot: 'amber',
   },
   {
-    tag: 'Programme',
-    name: 'Validation Pathway',
-    body: 'A structured programme of testing, engineering review, and regulatory preparation. The objective is validation readiness — not demonstration. Planned for Stages 05–06.',
-    status: 'Preparation underway',
-    dotVariant: 'amber',
+    tag: 'Materials',
+    name: 'Hemp printing materials',
+    body: 'Hemp-based printing material research is under way with UBC. Readiness will be confirmed by testing.',
+    status: 'Under development with UBC',
+    dot: 'teal',
+  },
+  {
+    tag: 'Fabrication experience',
+    name: 'UBC coyote project',
+    body: 'A printed stone base for a metal coyote sculpture, an initial setting to build fabrication experience and explore artistic design.',
+    status: 'Under development',
+    dot: 'teal',
+  },
+  {
+    tag: 'Engineering',
+    name: 'Prototype V1 and Cabin 1',
+    body: 'A team of engineers is designing and engineering Prototype V1, and evaluating an Alternative Solution pathway for Cabin 1 in British Columbia.',
+    status: 'Design and engineering under way',
+    dot: 'teal',
   },
 ];
 
-const STAGE_PROGRESS = [
-  { label: 'Stage 01 — Program Foundation — Completed',                dotVariant: 'dark',         opacity: 0.35, pulse: false },
-  { label: 'Stage 02 — Lean Lab Setup — Active',                       dotVariant: 'teal',         opacity: 0.7,  pulse: true  },
-  { label: 'Stage 03 — Equipment Manufacturing — Underway',            dotVariant: 'outline-teal', opacity: 0.4,  pulse: false },
-  { label: 'Stages 04–08 — Development, Validation & Launch — Planned', dotVariant: 'grey',        opacity: 0.28, pulse: false },
+const NEAR_TERM = [
+  { num: 'Application 01', title: 'Courtyard and landscape features',  body: 'Seating, planters, entry features and other elements shaped to complement a project’s architecture.' },
+  { num: 'Application 02', title: 'Sculptural elements and art bases', body: 'Custom sculpture bases and landscape installations developed with artists and design teams.' },
+  { num: 'Application 03', title: 'Bespoke architectural details',     body: 'Curved or textured feature elements, subject to engineering, durability and installation requirements.' },
 ];
 
-const APPS_PREVIEW = [
-  {
-    num: 'Domain 01',
-    title: 'Resilient Infrastructure',
-    body: 'Construction systems designed for consistent performance across demanding climate conditions — extreme cold, high humidity, seismic zones. System-level engineering, not component-level specification.',
-  },
-  {
-    num: 'Domain 02',
-    title: 'Rapid Deployment',
-    body: 'Modular production and assembly logic that treats time-to-occupancy as a system property — reducing trade dependencies at site level rather than compressing conventional workflows.',
-  },
-  {
-    num: 'Domain 03',
-    title: 'Remote & Distributed',
-    body: 'Infrastructure delivery to remote communities and strategic locations where conventional supply chains are impractical or absent. Factory production, reduced on-site dependency.',
-  },
+const PILOT_STEPS = [
+  { title: '1. Select a feature',    body: 'One landscape or architectural element with a clear purpose and budget.' },
+  { title: '2. Review and sample',   body: 'Assess feasibility with the design and engineering team, then a printed sample once equipment is commissioned.' },
+  { title: '3. Compare and decide',  body: 'Compare performance and installed cost before any project use.' },
+];
+
+const LONG_TERM = [
+  { num: 'Domain 01', title: 'Resilient Infrastructure', body: 'Systems designed with performance in demanding conditions in mind, such as cold climates, humidity and seismic zones, to be demonstrated through testing and validation.' },
+  { num: 'Domain 02', title: 'Rapid Deployment',         body: 'Modular production and assembly that aims to shorten time-to-occupancy by reducing site-level dependencies, to be evaluated.' },
+  { num: 'Domain 03', title: 'Remote & Distributed',     body: 'Housing with interested Indigenous communities and infrastructure for remote or defence-related settings, where factory production may reduce on-site demands. Requires suitable partners and approvals.' },
 ];
 
 // ── COMPONENT ──────────────────────────────────────────────────────────────
@@ -98,170 +119,211 @@ export default function Home() {
       <Nav bg="#F7F5F2" />
 
       {/* ── HERO ── */}
-      <section
-        aria-label="Spirea Platform"
-        style={{
-          background: '#1C1C1A',
-          minHeight: '84vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: '0 64px 76px',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        {/* D2 arc geometry — ambient, not symbolic */}
-        <div style={{ position: 'absolute', top: -60, right: -80 }}>
-          <D2LogoBg size={420} color="#F0EDE8" opacity={0.04} />
+      <section className="hero" aria-label="Spirea Platform">
+        {/* D2 arc geometry — ambient, not symbolic. Top-right, #6A6A68 at 7%. */}
+        <div className="hero-arc-bg">
+          <D2LogoBg size={420} />
         </div>
 
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: 600 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
-            <span style={{ display: 'inline-block', width: 28, height: 1, background: '#1D9E75', flexShrink: 0 }} aria-hidden="true" />
-            <span style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, letterSpacing: '0.36em', textTransform: 'uppercase', color: '#1D9E75' }}>
-              Integrated Construction Platform
-            </span>
+        <div className="hero-content">
+          <div className="hero-eb">
+            <span className="hero-eb-rule" aria-hidden="true" />
+            <span className="hero-eb-lbl">Integrated construction approach</span>
           </div>
-          <h1 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(32px,4.6vw,54px)', fontWeight: 600, lineHeight: 1.1, color: 'rgba(255,255,255,0.92)', letterSpacing: '-0.01em', marginBottom: 24 }}>
-            A new operating system<br />
-            for <em style={{ fontStyle: 'italic', color: 'rgba(255,255,255,0.52)' }}>construction.</em>
+          <h1 className="hero-h1">
+            3D printing, hemp-based materials and modular systems <em>for scalable construction.</em>
           </h1>
-          <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 13.5, color: 'rgba(255,255,255,0.42)', lineHeight: 1.84, maxWidth: 460, marginBottom: 44 }}>
-            Spirea Platform is developing an integrated approach to construction — combining material systems, production systems, and deployment systems into a unified platform. Prototype V1 is the first development program currently underway.
+          <p className="hero-body">
+            Spirea is developing an integrated construction approach combining digital fabrication, hemp-based building materials and modular systems. Current work includes hemp printing material development with UBC and the engineering of Prototype V1 toward an Alternative Solution pathway in British Columbia.
           </p>
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-            <BtnPrimary href="/prototype-v1">Development Program →</BtnPrimary>
-            <BtnGhost href="/strategic-applications" dark>Strategic Applications</BtnGhost>
+          <div className="hero-acts">
+            <BtnPrimary to="/prototype-v1">Current development →</BtnPrimary>
+            <BtnGhost to="/contact">Discuss a pilot</BtnGhost>
           </div>
         </div>
       </section>
 
-      {/* ── WHY SPIREA EXISTS ── */}
-      <section style={{ background: '#F0EDE8', padding: '72px 64px' }}>
-        <SectionDivider label="Why Spirea exists" />
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.25fr', gap: 72, alignItems: 'start' }}>
-          <h2 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(22px,2.8vw,34px)', color: '#1A1A18', fontWeight: 700, lineHeight: 1.25, letterSpacing: '-0.01em' }}>
-            Construction has not been engineered as an integrated system.
-          </h2>
+      {/* ── WHY AN INTEGRATED APPROACH ── */}
+      <section className="sec" style={{ background: '#F0EDE8' }}>
+        <SectionDivider label="Why an integrated approach" />
+        <div className="two-col-wide">
+          <h2 className="sh">Exploring how materials, fabrication and assembly can work together.</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            {[
-              'Construction today is a sequence of isolated decisions — materials specified independently, production contracted separately, assembly assembled on site from uncoordinated components. The result is slow delivery, inconsistent quality, and a structural inability to reduce carbon at scale.',
-              'Spirea addresses this by designing material systems, production systems, and deployment systems together from the outset — treating construction as a platform problem, not a procurement problem.',
-              'The platform is currently being realised through a staged development and validation programme.',
-            ].map((text, i) => (
-              <p key={i} style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 13.5, color: '#6A6A68', lineHeight: 1.87 }}>{text}</p>
+            {WHY_PARAGRAPHS.map((text) => (
+              <p key={text} className="sbody">{text}</p>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── PLATFORM FRAMEWORK ── */}
-      <section style={{ background: '#F7F5F2', borderTop: '0.5px solid #E0DDD8', borderBottom: '0.5px solid #E0DDD8', padding: '64px 64px' }}>
+      <section className="visual-band">
         <SectionDivider label="Platform framework" />
-        <h2 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(22px,2.8vw,34px)', fontWeight: 700, color: '#1A1A18', lineHeight: 1.25, marginBottom: 16 }}>
-          Four engines. One platform.
-        </h2>
-        <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 13.5, color: '#6A6A68', lineHeight: 1.87, maxWidth: 540, marginBottom: 40 }}>
-          Technology Development, Validation, Commercialization, and Knowledge run as four permanent engines beneath every prototype. Prototype V1 is their first output — not the platform itself.
+        <h2 className="sh" style={{ marginBottom: 16 }}>Three systems. One platform.</h2>
+        <p className="sbody" style={{ maxWidth: 540, marginBottom: 40 }}>
+          Materials, fabrication and assembly are developed together so that each can inform the others. That integration is Spirea’s long-term platform.
         </p>
 
-        {/* Platform Framework Diagram — architectural schematic SVG */}
-        <div style={{ background: '#fff', border: '0.5px solid #E0DDD8', overflow: 'hidden', marginBottom: 36, borderRadius: '0 0 80px 0' }}>
+        {/* Illustrative schematic — not a V1 specification. Scrolls horizontally on narrow screens. */}
+        <div className="img-arc-sm" style={{ background: '#fff', border: '0.5px solid #E0DDD8', overflowX: 'auto', marginBottom: 36 }}>
           <PlatformFrameworkDiagram />
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', border: '0.5px solid #E0DDD8' }}>
-          {ENGINES.map((p, i) => (
-            <div key={i} style={{ padding: '28px 22px', borderRight: i < 3 ? '0.5px solid #E0DDD8' : 'none' }}>
-              <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 600, fontSize: 8, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 14, display: 'flex', alignItems: 'center', gap: 8 }}>
-                <span style={{ display: 'inline-block', width: 16, height: 1, background: '#1D9E75', flexShrink: 0 }} aria-hidden="true" />
-                {p.label}
-              </div>
-              <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: 19, fontWeight: 550, color: '#1A1A18', marginBottom: 10, lineHeight: 1.2 }}>{p.title}</div>
-              <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 12, color: '#6A6A68', lineHeight: 1.82 }}>{p.body}</p>
+        <div className="platform-grid">
+          {PILLARS.map((p) => (
+            <div key={p.label} className="platform-cell">
+              <div className="cell-label">{p.label}</div>
+              <div className="cell-title">{p.title}</div>
+              <p className="cell-body">{p.body}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ── DEVELOPMENT PROGRAM ── */}
-      <section style={{ background: '#1A1A18', padding: '72px 64px' }}>
-        <SectionDivider label="Development program" dark />
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'start', marginBottom: 40 }}>
-          <div>
-            <h2 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(22px,2.8vw,34px)', fontWeight: 700, color: 'rgba(255,255,255,0.9)', lineHeight: 1.25, marginBottom: 16 }}>
-              Building the foundation for validation.
-            </h2>
-            <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 13.5, color: 'rgba(255,255,255,0.42)', lineHeight: 1.87 }}>
-              The platform is currently being developed through a staged engineering and validation programme. Prototype V1 is the first development program — focused on establishing laboratory infrastructure, equipment, and the methodology for future validation.
-            </p>
-          </div>
-          <div>
-            <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', marginBottom: 10 }}>
-              Current programme stage
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-              {STAGE_PROGRESS.map((s, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <StatusDot variant={s.dotVariant} size={8} />
-                  <span style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 9, color: `rgba(255,255,255,${s.opacity})`, letterSpacing: '0.1em' }}>
-                    {s.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 1, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.06)' }}>
-          {DEV_CELLS.map((cell, i) => (
-            <div key={i} style={{ background: '#1A1A18', padding: '26px 22px' }}>
-              <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)', marginBottom: 8 }}>{cell.tag}</div>
-              <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: 17, fontWeight: 600, color: 'rgba(255,255,255,0.82)', marginBottom: 8, lineHeight: 1.2 }}>{cell.name}</div>
-              <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 11.5, color: 'rgba(255,255,255,0.36)', lineHeight: 1.77, marginBottom: 10 }}>{cell.body}</p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-                <StatusDot variant={cell.dotVariant} size={5} />
-                <span style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.26)' }}>{cell.status}</span>
-              </div>
+      {/* ── HEMP PRINTING RESEARCH ── */}
+      <section className="sec" style={{ background: '#F7F5F2', borderTop: '0.5px solid #E0DDD8' }}>
+        <SectionDivider label="Hemp printing research" />
+        <h2 className="sh" style={{ maxWidth: 660, marginBottom: 16 }}>Hemp remains central to Spirea’s materials direction.</h2>
+        <p className="sbody" style={{ maxWidth: 640, marginBottom: 36 }}>
+          Spirea is developing hemp-based printing materials with UBC. The long-term materials direction and the material for the first V1 demonstration are separate questions, and each will be decided on evidence.
+        </p>
+        <div className="two-col">
+          {HEMP_CARDS.map((c) => (
+            <div key={c.label} className={c.hemp ? 'mat-card hemp' : 'mat-card'}>
+              <div className="cell-label">{c.label}</div>
+              <div className="cell-title">{c.title}</div>
+              <p className="cell-body">{c.body}</p>
             </div>
           ))}
         </div>
+        <p className="note-line">Wall configuration and other V1 details will be confirmed through engineering review.</p>
       </section>
 
-      {/* ── STRATEGIC APPLICATIONS PREVIEW ── */}
-      <section style={{ background: '#F0EDE8', borderTop: '0.5px solid #E0DDD8', padding: '72px 64px' }}>
-        <SectionDivider label="Strategic applications" />
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'start', marginBottom: 36 }}>
-          <h2 style={{ fontFamily: '"DM Serif Display",serif', fontSize: 'clamp(22px,2.8vw,34px)', fontWeight: 700, color: '#1A1A18', lineHeight: 1.25 }}>
-            Where the platform may be deployed.
-          </h2>
-          <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 13.5, color: '#6A6A68', lineHeight: 1.87 }}>
-            These are the deployment contexts the Spirea platform is being engineered to serve — pending Prototype V1 validation. They are not current products. They are the territories where an integrated construction platform addresses problems that conventional construction has not resolved.
+      {/* ── CURRENT DEVELOPMENT — parallel workstreams, not stages ── */}
+      <section className="sec dev-bg">
+        <SectionDivider label="Current development" />
+        <div className="two-col-wide two-col-even">
+          <h2 className="sh">Work is under way on several fronts at once.</h2>
+          <p className="sbody">
+            Equipment, materials and engineering are progressing in parallel. The immediate priority is the simplest practicable Prototype V1 system that can support an Alternative Solution acceptance pathway in British Columbia.
           </p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
-          {APPS_PREVIEW.map((app, i) => (
-            <div key={i} style={{ borderTop: '1px solid #E0DDD8', paddingTop: 22 }}>
-              <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 10 }}>{app.num}</div>
-              <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: 19, color: '#1A1A18', marginBottom: 8, lineHeight: 1.2, fontWeight: 550 }}>{app.title}</div>
-              <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 12, color: '#6A6A68', lineHeight: 1.78 }}>{app.body}</p>
+        <div className="dev-grid">
+          {DEV_CELLS.map((cell) => (
+            <div key={cell.name} className="dev-cell">
+              <div className="dev-tag">{cell.tag}</div>
+              <div className="dev-name">{cell.name}</div>
+              <p className="dev-body">{cell.body}</p>
+              <div className="dev-status">
+                <StatusDot variant={cell.dot} size={5} />
+                <span className="dev-status-text">{cell.status}</span>
+              </div>
             </div>
           ))}
         </div>
+        <div className="dev-row">
+          {/* Guan Li equipment photograph — crop excludes the supplier's specification panel */}
+          <figure className="dev-photo">
+            <ArcImage
+              src={printerPhoto}
+              width={1040}
+              height={820}
+              alt="Blue and white articulated Small Spider 3D concrete printer on tracks against a white background"
+            />
+            <figcaption>Guan Li Small Spider printer</figcaption>
+          </figure>
+          <div className="dev-prio">
+            <b>Immediate priority</b>
+            Develop the simplest practicable system for a BC Alternative Solution pathway. Material selection follows readiness and engineering evidence; system validation and building approval remain pending.
+          </div>
+        </div>
+      </section>
+
+      {/* ── NEAR-TERM APPLICATIONS + PILOT INVITATION ── */}
+      <section className="sec" style={{ background: '#F0EDE8', borderTop: '0.5px solid #E0DDD8' }}>
+        <SectionDivider label="Near-term applications" />
+        <div className="two-col-wide two-col-even" style={{ marginBottom: 36 }}>
+          <h2 className="sh">Architectural and landscape features, starting with a focused pilot.</h2>
+          <p className="sbody">
+            Digital fabrication may offer design freedom for curved, textured and bespoke elements. Spirea would like to explore this with design and construction teams through one well-defined pilot feature, with cost compared against conventional fabrication.
+          </p>
+        </div>
+
+        {/* Completed Guan Li project — fabrication reference only */}
+        <figure className="photo-row">
+          <ArcImage
+            src={aerialPhoto}
+            width={1172}
+            height={840}
+            alt="Aerial photograph of a landscaped play area with curved paths, orange surfacing and pale sculptural forms"
+          />
+          <figcaption>
+            <b>Fabrication reference</b>
+            Completed project by Guan Li, Spirea’s equipment supplier, shown as a fabrication reference only. It is not a Spirea project, does not use hemp materials and carries no Canadian approval. Photograph: Guan Li.
+          </figcaption>
+        </figure>
+
+        <div className="apps-preview-grid">
+          {NEAR_TERM.map((a) => (
+            <div key={a.num} className="app-preview-cell">
+              <div className="ap-num">{a.num}</div>
+              <div className="ap-title">{a.title}</div>
+              <p className="ap-body">{a.body}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="pilot-box">
+          <div className="cell-label">A focused pilot</div>
+          <div className="cell-title" style={{ fontSize: 24 }}>Start with one feature.</div>
+          <div className="pilot-steps">
+            {PILOT_STEPS.map((s) => (
+              <div key={s.title} className="pilot-step">
+                <b>{s.title}</b>
+                <span>{s.body}</span>
+              </div>
+            ))}
+          </div>
+          <p className="note-line" style={{ margin: '0 0 20px' }}>
+            Julia Liu · <a href="mailto:julia@spireaplatform.ca">julia@spireaplatform.ca</a> · <a href="https://spireaplatform.ca">spireaplatform.ca</a>
+          </p>
+          <BtnPrimary to="/contact">Discuss a pilot →</BtnPrimary>
+        </div>
+      </section>
+
+      {/* ── LONGER-TERM APPLICATIONS ── */}
+      <section className="sec apps-preview-bg">
+        <SectionDivider label="Longer-term applications" />
+        <div className="two-col-wide two-col-even" style={{ marginBottom: 36 }}>
+          <h2 className="sh">Where the platform may be deployed, in future.</h2>
+          <p className="sbody">These are future directions, pending Prototype V1 validation and the relevant approvals. They are not current products.</p>
+        </div>
+        <div className="apps-preview-grid">
+          {LONG_TERM.map((a) => (
+            <div key={a.num} className="app-preview-cell">
+              <div className="ap-num">{a.num}</div>
+              <div className="ap-title">{a.title}</div>
+              <p className="ap-body">{a.body}</p>
+            </div>
+          ))}
+        </div>
+        <p className="note-line">
+          <b style={{ fontFamily: 'var(--serif)', fontWeight: 400, fontSize: 18, color: '#1A1A18' }}>Intended business model:</b> licensing validated construction systems, supported by partner training and quality assurance.
+        </p>
       </section>
 
       {/* ── CONTACT BAND ── */}
-      <div style={{ background: '#F7F5F2', borderTop: '0.5px solid #E0DDD8', padding: '64px 64px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 40, flexWrap: 'wrap' }}>
+      <div className="contact-band">
         <div>
-          <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, letterSpacing: '0.32em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 12 }}>Collaboration &amp; development</div>
-          <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: 22, color: '#1A1A18', lineHeight: 1.35, marginBottom: 10, maxWidth: 500, fontWeight: 550 }}>
-            Spirea Platform welcomes collaboration, research, validation, and strategic development discussions.
+          <div className="cb-label">Collaboration &amp; development</div>
+          <div className="cb-h">
+            Spirea Platform welcomes collaboration, research and validation discussions, and would be glad to discuss a focused architectural or landscape pilot.
           </div>
-          <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 12.5, color: '#6A6A68', lineHeight: 1.78, maxWidth: 440 }}>
+          <p className="cb-b">
             Building relationships with research institutions, engineering partners, and organisations aligned with long-term development and validation.
           </p>
         </div>
-        <BtnPrimary href="/contact" style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>Contact Spirea →</BtnPrimary>
+        <BtnPrimary to="/contact" style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>Contact Spirea →</BtnPrimary>
       </div>
 
       <Footer />

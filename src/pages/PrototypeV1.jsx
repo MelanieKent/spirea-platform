@@ -1,237 +1,169 @@
 /**
- * PrototypeV1 — Spirea Platform
+ * Prototype V1 — Development Program (handoff v5)
  *
- * Background: white (#ffffff) — evidence register
- * This page is the approved design benchmark for the entire site.
- * All other pages should feel system-consistent with this one.
+ * White page with a faint grid canvas. Workstreams progress in parallel (no staged
+ * Stage 0–5 model). Wording must stay as approved: configuration and material details
+ * are intentionally withheld; validation and building approval are pending.
  *
- * Structure:
- *   - Document header (eyebrow + title + meta)
- *   - Hero statement (approved language)
- *   - Stage summary strip (4 cells)
- *   - Main 2-column: left (process map + schedule + pillars) | right (sidebar)
- *
- * IP protection: architecture, system configuration, and material details
- * are NOT disclosed. Only programme methodology and stage status are shown.
+ * Status colours: teal = under way, amber = in preparation / evaluation, grey = pending.
  */
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
-import ProcessMapSVG from '../components/diagrams/ProcessMapSVG';
-import { StatusDot } from '../components/UI';
 
-// ── STAGES DATA ────────────────────────────────────────────────────────────
-// Update status field as programme progresses:
-//   'done' | 'active' | 'underway' | 'planned' | 'future'
-const STAGES = [
-  { id: '01', label: 'Stage 01',              name: 'Program Foundation',                 status: 'done',     detail: 'Completed — governance model and Master Plan approved' },
-  { id: '02', label: 'Stage 02 — Active',     name: 'Lean Lab Setup',                     status: 'active',   detail: 'Active — laboratory operational, print cycles underway' },
-  { id: '03', label: 'Stage 03 — Underway',   name: 'Equipment Manufacturing',            status: 'underway', detail: 'Underway — Guan Li Spider procurement and commissioning' },
-  { id: '04', label: 'Stage 04',              name: 'Prototype Development',              status: 'planned',  detail: 'Planned' },
-  { id: '05', label: 'Stage 05',              name: 'Laboratory Validation',              status: 'planned',  detail: 'Planned' },
-  { id: '06', label: 'Stage 06',              name: 'Alternative Solution',               status: 'planned',  detail: 'Planned' },
-  { id: '07', label: 'Stage 07',              name: 'Demonstration Project',              status: 'planned',  detail: 'Planned' },
-  { id: '08', label: 'Stage 08 — Future Target', name: 'Commercial Launch',               status: 'future',   detail: 'Future target' },
+const META = [
+  { label: 'Focus',                         value: 'Simplest practicable V1 system', color: 'var(--ink)' },
+  { label: 'Pathway',                       value: 'BC Alternative Solution — evaluation under way', color: 'var(--teal-d)' },
+  { label: 'Validation and approval',       value: 'Pending' },
 ];
 
-const STATUS_ITEMS = [
-  { label: 'Laboratory establishment', variant: 'teal'         },
-  { label: 'Equipment procurement',    variant: 'amber'        },
-  { label: 'Validation planning',      variant: 'amber'        },
-  { label: 'Research partnerships',    variant: 'teal'         },
-  { label: 'Prototype V1 printing',    variant: 'grey'         },
-  { label: 'Engineering validation',   variant: 'grey'         },
+// tone: 'a' = in preparation (amber), 't' = under way (teal)
+const STAGE_STRIP = [
+  { tone: 'a', label: 'In preparation', name: 'Equipment shipment and commissioning', inactive: false },
+  { tone: 't', label: 'Under way',      name: 'Hemp printing materials with UBC',       inactive: true },
+  { tone: 't', label: 'Under way',      name: 'Prototype V1 and Cabin 1 engineering',   inactive: true },
+  { tone: 't', label: 'Under way',      name: 'Alternative Solution pathway evaluation', inactive: true },
 ];
 
-const PILLARS = [
-  { sym: 'L', name: 'Laboratory\nEstablishment', active: true  },
-  { sym: 'V', name: 'Validation\nPreparation',   active: true  },
-  { sym: 'P', name: 'Prototype\nDevelopment',    active: false },
-  { sym: 'M', name: 'Material\nScience',         active: false },
-  { sym: 'E', name: 'Engineering\nAnalysis',     active: false },
-  { sym: 'R', name: 'Regulatory\nReadiness',     active: false },
+// node: pn-u (in preparation) | pn-a (under way) | pn-p (pending, dependent) | pn-f (pending)
+// det:  pd-u | pd-a | pd-p | pd-f
+const WORKSTREAMS = [
+  { node: 'pn-u', det: 'pd-u', name: 'Equipment',                    detail: 'Manufactured; preparing for shipment and commissioning' },
+  { node: 'pn-a', det: 'pd-a', name: 'Hemp printing materials',      detail: 'Under development with UBC' },
+  { node: 'pn-a', det: 'pd-a', name: 'UBC coyote project',           detail: 'Printed stone base for a coyote sculpture, under development' },
+  { node: 'pn-a', det: 'pd-a', name: 'Prototype V1 and Cabin 1',     detail: 'Design and engineering under way' },
+  { node: 'pn-a', det: 'pd-a', name: 'Alternative Solution pathway', detail: 'Evaluation under way' },
+  { node: 'pn-p', det: 'pd-p', name: 'Testing and system validation', detail: 'Pending commissioning and engineering' },
+  { node: 'pn-f', det: 'pd-f', name: 'Building approval',            detail: 'Pending' },
+];
+
+// dot: sdt teal | sda amber | sdg grey
+const STATUS_ROWS = [
+  { label: 'Equipment manufactured',       dot: 'sdt' },
+  { label: 'Hemp material research',       dot: 'sdt' },
+  { label: 'V1 engineering',               dot: 'sdt' },
+  { label: 'Commissioning',                dot: 'sda' },
+  { label: 'Alternative Solution pathway', dot: 'sda' },
+  { label: 'System validation',            dot: 'sdg' },
+  { label: 'Building approval',            dot: 'sdg' },
+];
+
+const LEGEND = [
+  { style: { background: 'var(--teal)' },                                   label: 'Under way' },
+  { style: { background: '#BA7517' },                                       label: 'In preparation / evaluation' },
+  { style: { background: 'var(--dv)', border: '0.5px solid #C8C4B8' },      label: 'Pending' },
 ];
 
 const PRINCIPLES = [
-  'Foundation before fabrication. Laboratory infrastructure is established before prototype development begins.',
-  'Validation-driven from the outset. The programme supports future independent engineering review.',
-  'Honest stage representation. No claims are made beyond what the programme has achieved.',
-  'IP protected throughout. Development details remain confidential pending patent preparation.',
+  { lead: 'Parallel progress.', text: 'Design, materials and equipment work proceed together where practicable.' },
+  { lead: 'Evidence-led.',      text: 'Choices follow engineering review, testing and regulatory requirements.' },
+  { lead: 'Honest status.',     text: 'No claims are made beyond what has been achieved.' },
+  { lead: 'IP protected.',      text: 'Details remain confidential pending patent preparation.' },
 ];
 
-function statusDetailColor(status) {
-  return {
-    done:     '#2C2C2A',
-    active:   '#1D9E75',
-    underway: '#BA7517',
-    planned:  '#B0ADA8',
-    future:   '#C8C4B8',
-  }[status] ?? '#B0ADA8';
-}
-
-// ── COMPONENT ──────────────────────────────────────────────────────────────
 export default function PrototypeV1() {
   return (
     <>
-      <style>{`@keyframes sp{0%,100%{opacity:1}50%{opacity:.35}}.sp-pulse{animation:sp 2.4s ease-in-out infinite}`}</style>
-      <Nav bg="#ffffff" />
+      <Nav bg="#fff" />
 
-      <div style={{ background: '#fff', padding: 40 }}>
-        <div style={{ background: '#fff', maxWidth: 900, margin: '0 auto', border: '0.5px solid #E0DDD8', borderRadius: 3, padding: '40px 36px 60px', position: 'relative', overflow: 'hidden' }}>
+      <div className="v1-page">
+        <div className="v1-canvas">
+          <div className="v1-grid-bg" aria-hidden="true" />
 
-          {/* Engineering grid background */}
-          <div
-            aria-hidden="true"
-            style={{
-              position: 'absolute', inset: 0, pointerEvents: 'none',
-              backgroundImage: [
-                'repeating-linear-gradient(0deg,transparent,transparent 31px,rgba(180,176,168,.09) 31px,rgba(180,176,168,.09) 32px)',
-                'repeating-linear-gradient(90deg,transparent,transparent 31px,rgba(180,176,168,.09) 31px,rgba(180,176,168,.09) 32px)',
-              ].join(','),
-            }}
-          />
-
-          {/* Document header */}
-          <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', paddingBottom: 18, borderBottom: '0.5px solid #E0DDD8', marginBottom: 28, position: 'relative', zIndex: 1 }}>
+          <header className="v1-header">
             <div>
-              <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, letterSpacing: '0.36em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 5 }}>Prototype V1 — Development Program</div>
-              <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: '1.25rem', color: '#1A1A18', fontWeight: 550 }}>Construction System Development</div>
+              <div className="v1-eyebrow">Prototype V1 — Development Program</div>
+              <h1 className="v1-title">Construction System Development</h1>
             </div>
-            <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, color: '#9A9A98', textAlign: 'right', lineHeight: 2.1 }}>
-              <div>Program stage &nbsp;<span style={{ color: '#1D9E75' }}>02 / Lean Lab Setup</span></div>
-              <div>Status &nbsp;<span style={{ color: '#BA7517' }}>Foundation in progress</span></div>
-              <div>Validation &nbsp;<span>Preparation underway</span></div>
+            <div className="v1-meta">
+              {META.map((m) => (
+                <div key={m.label}>
+                  {m.label} &nbsp;<span style={m.color ? { color: m.color } : undefined}>{m.value}</span>
+                </div>
+              ))}
             </div>
           </header>
 
-          {/* Hero statement */}
-          <div style={{ background: '#fff', border: '0.5px solid #E0DDD8', borderLeft: '2px solid #1D9E75', padding: '22px 26px', marginBottom: 26, position: 'relative', zIndex: 1 }}>
-            <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 7, letterSpacing: '0.34em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 9 }}>Development & Validation Program</div>
-            <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: '1.01rem', color: '#1A1A18', lineHeight: 1.65, maxWidth: 560, fontWeight: 550 }}>
-              Prototype V1 is being developed through a staged engineering and validation program designed to support future independent review and regulatory readiness.
+          <div className="v1-hero-stmt">
+            <div className="v1-hs-ey">Immediate priority</div>
+            <div className="v1-hs-body">
+              Develop the simplest practicable Prototype V1 system that can support an Alternative Solution acceptance pathway in British Columbia.
             </div>
-            <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8.5, color: '#6A6A68', lineHeight: 1.75, marginTop: 11, maxWidth: 510 }}>
-              Spirea is building the physical and procedural foundation required for a disciplined validation process. Prototype V1 architecture, system configuration, and material details are intentionally withheld during ongoing development.
+            <div className="v1-hs-sub">
+              Configuration and material details are intentionally withheld during development. System validation and building approval remain pending.
             </div>
           </div>
 
-          {/* Stage strip */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', border: '0.5px solid #E0DDD8', background: '#E0DDD8', gap: 0.5, marginBottom: 26, position: 'relative', zIndex: 1 }} role="list">
-            {[
-              { label: 'Stage 01',           name: 'Research\nFoundation',      letter: 'R', variant: 'done'     },
-              { label: 'Stage 02 — Active',   name: 'Laboratory\nEstablishment', letter: 'L', variant: 'active'   },
-              { label: 'Stage 03 — Underway', name: 'Equipment\nProcurement',    letter: 'E', variant: 'underway' },
-              { label: 'Stages 04 – 07',      name: 'Development\n& Validation', letter: 'D', variant: 'planned'  },
-            ].map((cell) => (
-              <div
-                key={cell.letter}
-                role="listitem"
-                aria-current={cell.variant === 'active' ? 'step' : undefined}
-                style={{ background: cell.variant === 'active' ? '#FDFCF9' : '#F7F5F2', padding: '13px 12px', position: 'relative', overflow: 'hidden' }}
-              >
-                <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 7, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 4, color: cell.variant === 'active' ? '#1D9E75' : cell.variant === 'underway' ? '#BA7517' : '#9A9A98' }}>{cell.label}</div>
-                <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 10, color: cell.variant === 'active' ? '#1D9E75' : cell.variant === 'underway' ? '#6A6A68' : '#1A1A18', lineHeight: 1.35, whiteSpace: 'pre-line' }}>{cell.name}</div>
-                <span aria-hidden="true" style={{ fontFamily: '"DM Serif Display",serif', fontSize: 27, fontWeight: 200, position: 'absolute', bottom: 2, right: 7, color: cell.variant === 'active' ? '#B8E8D8' : '#E0DDD8', userSelect: 'none' }}>{cell.letter}</span>
+          <div className="v1-stage-strip" role="list">
+            {STAGE_STRIP.map((s) => (
+              <div key={s.name} className={s.inactive ? 'v1-sc ia' : 'v1-sc'} role="listitem">
+                <div className={`v1-sc-lbl ${s.tone}`}>{s.label}</div>
+                <div className={s.tone === 'a' && !s.inactive ? 'v1-sc-name a' : 'v1-sc-name'}>{s.name}</div>
               </div>
             ))}
           </div>
 
-          {/* Main 2-column */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 196px', gap: 24, position: 'relative', zIndex: 1 }}>
-            {/* Left */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-
-              {/* Process map */}
-              <div style={{ background: '#fff', border: '0.5px solid #E0DDD8', borderRadius: 3, padding: '16px 14px' }}>
-                <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 7, letterSpacing: '0.26em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 12 }}>Development program sequence</div>
-                <ProcessMapSVG />
-              </div>
-
-              {/* Programme schedule */}
-              <div style={{ background: '#fff', border: '0.5px solid #E0DDD8', borderRadius: 3, padding: '16px 14px' }}>
-                <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 7, letterSpacing: '0.26em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 12 }}>Programme schedule</div>
-                <ol style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-                  {STAGES.map((stage, i) => (
-                    <li key={stage.id} style={{ display: 'grid', gridTemplateColumns: '18px 1fr', gap: 9, padding: '8px 0', borderBottom: i < STAGES.length - 1 ? '0.5px solid #F0EDE8' : 'none' }}>
-                      <span
-                        className={stage.status === 'active' ? 'sp-pulse' : ''}
-                        style={{
-                          width: 13, height: 13, borderRadius: '50%', marginTop: 1, flexShrink: 0, display: 'inline-block',
-                          background: stage.status === 'done' ? '#2C2C2A' : stage.status === 'active' ? '#1D9E75' : stage.status === 'underway' ? '#fff' : '#F0EDE8',
-                          border: stage.status === 'underway' ? '1.5px solid #1D9E75' : stage.status === 'planned' ? '0.5px solid #E0DDD8' : stage.status === 'future' ? '0.5px dashed #E0DDD8' : 'none',
-                        }}
-                        aria-hidden="true"
-                      />
+          <div className="v1-main">
+            <div className="v1-left">
+              <div className="vc">
+                <div className="vc-lbl">Workstreams — progressing in parallel</div>
+                <ol style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                  {WORKSTREAMS.map((w, i) => (
+                    <li
+                      key={w.name}
+                      className="prog-row"
+                      style={i === WORKSTREAMS.length - 1 ? { borderBottom: 'none' } : undefined}
+                    >
+                      <div className={`pnode ${w.node}`} />
                       <div>
-                        <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 6.5, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#B0ADA8', marginBottom: 1 }}>{stage.label}</div>
-                        <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 9, color: '#1A1A18', lineHeight: 1.4, marginBottom: 1 }}>{stage.name}</div>
-                        <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 6.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: statusDetailColor(stage.status) }}>{stage.detail}</div>
+                        <div className="ps-name">{w.name}</div>
+                        <div className={`ps-det ${w.det}`}>{w.detail}</div>
                       </div>
                     </li>
                   ))}
                 </ol>
               </div>
 
-              {/* Development pillars */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 6 }}>
-                {PILLARS.map((p) => (
-                  <div key={p.sym} style={{ border: `0.5px solid ${p.active ? '#1D9E75' : '#E0DDD8'}`, borderRadius: 3, padding: '10px 8px', background: '#fff', textAlign: 'center' }}>
-                    <div style={{ fontFamily: '"DM Serif Display",serif', fontSize: 18, fontWeight: 200, color: p.active ? '#1D9E75' : '#E0DDD8', marginBottom: 4, lineHeight: 1 }} aria-hidden="true">{p.sym}</div>
-                    <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 7, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#9A9A98', lineHeight: 1.5, whiteSpace: 'pre-line' }}>{p.name}</div>
-                  </div>
-                ))}
+              <div className="vc">
+                <div className="vc-lbl">Initial material selection</div>
+                <p className="ip-text" style={{ fontSize: 15, lineHeight: 1.7 }}>
+                  Guan Li’s premix adapted for BC conditions, or the hemp-based printing material, depending on readiness and engineering evidence.
+                </p>
               </div>
             </div>
 
-            {/* Right sidebar */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-
-              {/* Status */}
-              <div style={{ background: '#fff', border: '0.5px solid #E0DDD8', borderRadius: 3, padding: 13 }}>
-                <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 7, letterSpacing: '0.26em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 10 }}>Current status</div>
-                {STATUS_ITEMS.map((item) => (
-                  <div key={item.label} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 7 }}>
-                    <span style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, color: '#6A6A68' }}>{item.label}</span>
-                    <StatusDot variant={item.variant} size={7} />
+            <div className="v1-right">
+              <div className="sbk">
+                <div className="sbk-title">Current status</div>
+                {STATUS_ROWS.map((r) => (
+                  <div key={r.label} className="st-row">
+                    <span className="st-lbl">{r.label}</span>
+                    <span className={`sdot ${r.dot}`} />
                   </div>
                 ))}
-                <div style={{ marginTop: 10, paddingTop: 9, borderTop: '0.5px solid #F0EDE8', display: 'flex', flexDirection: 'column', gap: 4 }}>
-                  {[['#1D9E75', 'Active / In progress'], ['#BA7517', 'Underway / Planning'], ['#E0DDD8', 'Not yet started']].map(([color, label]) => (
-                    <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-                      <span style={{ width: 5, height: 5, borderRadius: '50%', background: color, display: 'inline-block', border: color === '#E0DDD8' ? '0.5px solid #C8C4B8' : 'none' }} aria-hidden="true" />
-                      <span style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 7, color: '#B0ADA8', letterSpacing: '0.07em' }}>{label}</span>
+                <div className="sleg">
+                  {LEGEND.map((l) => (
+                    <div key={l.label} className="sleg-row">
+                      <span className="sleg-dot" style={l.style} />
+                      <span className="sleg-lbl">{l.label}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Phase bar */}
-              <div style={{ background: '#fff', border: '0.5px solid #E0DDD8', borderRadius: 3, padding: 13 }}>
-                <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 7, letterSpacing: '0.26em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 10 }}>Program phase</div>
-                <div style={{ display: 'flex', gap: 4, marginBottom: 8 }} role="progressbar" aria-valuenow={2} aria-valuemin={1} aria-valuemax={8} aria-label="Stage 2 of 8">
-                  {['#2C2C2A', '#1D9E75', null, null, null, null, null, null].map((fill, i) => (
-                    <div key={i} style={{ flex: 1, height: 4, borderRadius: 1, background: fill ?? '#EEEBE6', border: fill ? 'none' : '0.5px solid #E0DDD8' }} />
-                  ))}
-                </div>
-                <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 7, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 8 }}>Stage 02 of 08</div>
-                <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, color: '#6A6A68', lineHeight: 1.7 }}>Validation activities are planned for a future stage.</p>
-              </div>
-
-              {/* Principles */}
-              <div style={{ background: '#fff', border: '0.5px solid #E0DDD8', borderRadius: 3, padding: 13 }}>
-                <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 7, letterSpacing: '0.26em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 10 }}>Development principles</div>
-                {PRINCIPLES.map((text, i) => (
-                  <div key={i} style={{ display: 'flex', gap: 6, alignItems: 'flex-start', marginBottom: i < PRINCIPLES.length - 1 ? 7 : 0 }}>
-                    <span style={{ width: 0.8, background: '#1D9E75', flexShrink: 0, marginTop: 2, alignSelf: 'stretch' }} aria-hidden="true" />
-                    <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, color: '#6A6A68', lineHeight: 1.6, margin: 0 }}>{text}</p>
+              <div className="sbk">
+                <div className="sbk-title">Development principles</div>
+                {PRINCIPLES.map((p) => (
+                  <div key={p.lead} className="prin">
+                    <div className="prin-rule" />
+                    <p className="prin-text">{p.lead} {p.text}</p>
                   </div>
                 ))}
               </div>
 
-              {/* IP note */}
-              <div style={{ background: '#F7F5F2', border: '0.5px solid #E0DDD8', borderLeft: '2px solid #1D9E75', borderRadius: '0 3px 3px 0', padding: '11px 13px' }}>
-                <div style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 7, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#9A9A98', marginBottom: 4 }}>IP Confidentiality</div>
-                <p style={{ fontFamily: '"DM Sans",sans-serif', fontWeight: 300, fontSize: 8, color: '#6A6A68', lineHeight: 1.65, margin: 0 }}>
-                  Prototype V1 architecture, system configuration, and material details are intentionally withheld during ongoing development.
+              <div className="ip-note">
+                <div className="ip-lbl">IP confidentiality</div>
+                <p className="ip-text">
+                  Prototype V1 architecture, system configuration and material details are intentionally withheld during ongoing development.
                 </p>
               </div>
             </div>

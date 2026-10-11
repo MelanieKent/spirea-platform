@@ -1,211 +1,92 @@
-import { Link } from "react-router-dom";
 /**
- * Shared UI Components — Spirea Platform
+ * Shared UI Components — Spirea Platform (handoff v5)
  *
  * SectionDivider  — teal arc rule + label, used on every page
- * BtnPrimary      — teal filled button
- * BtnGhost        — transparent outlined button (dark/light contexts)
+ * BtnPrimary      — teal filled button (internal route via `to`, external or mailto via `href`)
+ * BtnGhost        — outlined button on light backgrounds
  * StatusDot       — coloured dot for programme status indicators
- */
-
-/**
- * SectionDivider
- * Teal horizontal rule (40px) + tracked uppercase label.
- * Used at the top of every major section across all pages.
+ * TealAccentNote  — left-bordered note block, teal accent
+ * ArcImage        — figure image with the D2 arc corner (applied to the wrapper, never the <img>)
  *
- * Props:
- *   label — section label text
- *   dark  — true for dark section backgrounds (uses white/22% label)
+ * v5: dark-background props removed (the site has no dark sections). Sizes and colours
+ * come from globals.css (.btn-primary, .btn-ghost, .slbl, ...), so there are no inline
+ * font sizes here.
  */
-export function SectionDivider({ label, dark = false }) {
+import { Link } from 'react-router-dom';
+
+export function SectionDivider({ label }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', marginBottom: 40 }}>
-      <span
-        style={{
-          display: 'inline-block',
-          width: 40,
-          height: 1,
-          background: '#1D9E75',
-          marginRight: 14,
-          flexShrink: 0,
-        }}
-        aria-hidden="true"
-      />
-      <span
-        style={{
-          fontFamily: '"DM Sans", sans-serif',
-          fontWeight: 300,
-          fontSize: 8,
-          letterSpacing: '0.32em',
-          textTransform: 'uppercase',
-          color: dark ? 'rgba(255,255,255,0.22)' : '#9A9A98',
-        }}
-      >
-        {label}
-      </span>
+    <div className="sdiv">
+      <span className="sarc" aria-hidden="true" />
+      <span className="slbl">{label}</span>
     </div>
   );
 }
 
-/**
- * BtnPrimary — teal filled CTA button
- * Used on: Homepage hero, homepage contact band
- *
- * Props:
- *   children  — button label
- *   href      — link destination (renders as <a> if provided, else <button>)
- *   onClick   — click handler
- *   style     — additional inline styles
- */
-export function BtnPrimary({ children, href, onClick, style = {} }) {
-  const baseStyle = {
-    background: '#1D9E75',
-    color: '#fff',
-    padding: '13px 28px',
-    fontFamily: '"DM Sans", sans-serif',
-    fontSize: 10.5,
-    letterSpacing: '0.18em',
-    textTransform: 'uppercase',
-    textDecoration: 'none',
-    display: 'inline-block',
-    border: 'none',
-    cursor: 'pointer',
-    fontWeight: 300,
-    transition: 'background 0.14s',
-    ...style,
-  };
+function ButtonLink({ className, to, href, children, style, onClick }) {
+  if (to)   return <Link to={to} className={className} style={style}>{children}</Link>;
+  if (href) return <a href={href} className={className} style={style}>{children}</a>;
+  return <button type="button" className={className} style={style} onClick={onClick}>{children}</button>;
+}
 
-  if (href) {
-    return (
-      <Link to={href} style={baseStyle}>
-        {children}
-      </Link>
-    );
-  }
-  return (
-    <button
-      onClick={onClick}
-      style={baseStyle}
-      onMouseEnter={(e) => { e.target.style.background = '#0F6E56'; }}
-      onMouseLeave={(e) => { e.target.style.background = '#1D9E75'; }}
-    >
-      {children}
-    </button>
-  );
+/** Props: to (internal route) | href (external/mailto) | onClick, style, children */
+export function BtnPrimary(props) {
+  return <ButtonLink className="btn-primary" {...props} />;
+}
+
+export function BtnGhost(props) {
+  return <ButtonLink className="btn-ghost" {...props} />;
 }
 
 /**
- * BtnGhost — transparent outlined button
- * Used in hero section on dark background.
- *
- * Props:
- *   children  — button label
- *   href      — link destination
- *   dark      — true for dark background context (default: true)
- */
-export function BtnGhost({ children, href, dark = true }) {
-  const style = {
-    background: 'none',
-    color: dark ? 'rgba(255,255,255,0.4)' : '#6A6A68',
-    border: dark ? '0.5px solid rgba(255,255,255,0.2)' : '0.5px solid #E0DDD8',
-    padding: '13px 28px',
-    fontFamily: '"DM Sans", sans-serif',
-    fontSize: 10.5,
-    letterSpacing: '0.18em',
-    textTransform: 'uppercase',
-    textDecoration: 'none',
-    display: 'inline-block',
-    cursor: 'pointer',
-    fontWeight: 300,
-    transition: 'all 0.14s',
-  };
-
-  return (
-    <Link to={href} style={style}>
-      {children}
-    </Link>
-  );
-}
-
-/**
- * StatusDot — coloured programme status indicator
- * Used in V1 page status sidebar and homepage dev program band.
- *
- * Props:
- *   variant — 'teal' | 'amber' | 'dark' | 'grey' | 'outline-teal'
- *   size    — diameter in px (default: 7)
+ * StatusDot — variant: 'teal' | 'amber' | 'dark' | 'grey' | 'outline-teal'; size in px (default 7).
+ * Amber = in preparation / evaluation. Teal = under way. Grey = pending.
  */
 export function StatusDot({ variant = 'teal', size = 7 }) {
   const styles = {
-    teal:         { background: '#1D9E75' },
-    amber:        { background: '#BA7517' },
-    dark:         { background: '#2C2C2A' },
-    grey:         { background: '#2C2C2A', border: '0.5px solid #55544fff' },
-    'outline-teal': { background: '#2C2C2A', border: '1.5px solid #1D9E75' },
+    teal:           { background: '#1D9E75' },
+    amber:          { background: '#BA7517' },
+    dark:           { background: '#2C2C2A' },
+    grey:           { background: '#E0DDD8', border: '0.5px solid #C8C4B8' },
+    'outline-teal': { background: '#fff', border: '1.5px solid #1D9E75' },
   };
-
   return (
     <span
-      style={{
-        display: 'inline-block',
-        width: size,
-        height: size,
-        borderRadius: '50%',
-        flexShrink: 0,
-        ...styles[variant],
-      }}
+      style={{ display: 'inline-block', width: size, height: size, borderRadius: '50%', flexShrink: 0, ...styles[variant] }}
       aria-hidden="true"
     />
   );
 }
 
 /**
- * TealAccentNote — left-bordered note block, teal accent
- * Used for: IP confidentiality note, Applications disclaimer, hero sub-note on V1 page
- *
- * Props:
- *   label     — optional small label above text (string or null)
- *   children  — note body text
- *   bg        — background ('chalk' | 'white') default: 'white'
+ * TealAccentNote — optional label + body. bg: 'chalk' | 'white' (default 'white').
  */
 export function TealAccentNote({ label = null, children, bg = 'white' }) {
-  const bgColor = bg === 'chalk' ? '#F7F5F2' : '#fff';
   return (
     <div
       style={{
-        background: bgColor,
+        background: bg === 'chalk' ? '#F7F5F2' : '#fff',
         border: '0.5px solid #E0DDD8',
         borderLeft: '2px solid #1D9E75',
         borderRadius: '0 3px 3px 0',
         padding: '11px 13px',
       }}
     >
-      {label && (
-        <div
-          style={{
-            fontFamily: '"DM Sans", sans-serif',
-            fontWeight: 300,
-            fontSize: 7,
-            letterSpacing: '0.24em',
-            textTransform: 'uppercase',
-            color: '#9A9A98',
-            marginBottom: 4,
-          }}
-        >
-          {label}
-        </div>
-      )}
-      <div
-        style={{
-          fontFamily: '"DM Sans", sans-serif',
-          fontWeight: 300,
-          fontSize: 8,
-          color: '#6A6A68',
-          lineHeight: 1.65,
-        }}
-      >
-        {children}
-      </div>
+      {label && <div className="ip-lbl">{label}</div>}
+      <div className="ip-text">{children}</div>
+    </div>
+  );
+}
+
+/**
+ * ArcImage — photograph inside the D2 arc-corner wrapper.
+ *   size: 'sm' (0 0 80px 0, content photos) | 'lg' (0 0 120px 0, founder portrait)
+ * Always pass width and height so the page does not shift while the image loads.
+ */
+export function ArcImage({ src, alt, width, height, size = 'sm', style }) {
+  return (
+    <div className={size === 'lg' ? 'img-arc' : 'img-arc-sm'} style={style}>
+      <img src={src} alt={alt} width={width} height={height} />
     </div>
   );
 }
