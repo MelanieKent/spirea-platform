@@ -233,7 +233,7 @@ export default function Home() {
             <figcaption>Guan Li Small Spider printer</figcaption>
           </figure>
           <div className="dev-prio">
-            <b>Immediate priority</b>
+            <b style={{ fontWeight: '550' }}>Immediate priority</b>
             Develop the simplest practicable system for a BC Alternative Solution pathway. Material selection follows readiness and engineering evidence; system validation and building approval remain pending.
           </div>
         </div>
@@ -258,7 +258,7 @@ export default function Home() {
             alt="Aerial photograph of a landscaped play area with curved paths, orange surfacing and pale sculptural forms"
           />
           <figcaption>
-            <b>Fabrication reference</b>
+            <b style={{ fontWeight: '550' }}>Fabrication reference</b>
             Completed project by Guan Li, Spirea’s equipment supplier, shown as a fabrication reference only. It is not a Spirea project, does not use hemp materials and carries no Canadian approval. Photograph: Guan Li.
           </figcaption>
         </figure>
@@ -279,7 +279,7 @@ export default function Home() {
           <div className="pilot-steps">
             {PILOT_STEPS.map((s) => (
               <div key={s.title} className="pilot-step">
-                <b>{s.title}</b>
+                <b style={{ fontWeight: '550' }}>{s.title}</b>
                 <span>{s.body}</span>
               </div>
             ))}
@@ -308,7 +308,7 @@ export default function Home() {
           ))}
         </div>
         <p className="note-line">
-          <b style={{ fontFamily: 'var(--serif)', fontWeight: 400, fontSize: 18, color: '#1A1A18' }}>Intended business model:</b> licensing validated construction systems, supported by partner training and quality assurance.
+          <b style={{ fontFamily: 'var(--serif)', fontWeight: 550, fontSize: 18, color: '#1A1A18' }}>Intended business model:</b> licensing validated construction systems, supported by partner training and quality assurance.
         </p>
       </section>
 

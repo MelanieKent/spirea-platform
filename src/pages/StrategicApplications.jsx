@@ -73,7 +73,7 @@ export default function StrategicApplications() {
       <div className="apps-page">
         <div className="apps-hero">
           <SectionDivider label="Strategic applications" />
-          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(28px,4vw,48px)', color: 'var(--di)', lineHeight: 1.1, letterSpacing: '-.015em', maxWidth: 580, marginBottom: 16 }}>
+          <h1 style={{ fontFamily: 'var(--serif)', fontWeight: '550', fontSize: 'clamp(28px,4vw,48px)', color: 'var(--di)', lineHeight: 1.1, letterSpacing: '-.015em', maxWidth: 580, marginBottom: 16 }}>
             Where Spirea may be deployed.
           </h1>
           <p className="sbody" style={{ maxWidth: 480, marginBottom: 0 }}>
