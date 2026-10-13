@@ -29,7 +29,7 @@ const STAGE_STRIP = [
 const WORKSTREAMS = [
   { node: 'pn-u', det: 'pd-u', name: 'Equipment',                    detail: 'Manufactured; preparing for shipment and commissioning' },
   { node: 'pn-a', det: 'pd-a', name: 'Hemp printing materials',      detail: 'Under development with UBC' },
-  { node: 'pn-a', det: 'pd-a', name: 'UBC coyote project',           detail: 'Printed stone base for a coyote sculpture, under development' },
+  { node: 'pn-u', det: 'pd-u', name: 'UBC coyote project',           detail: 'Proposed 3D-printed pedestal for a steel coyote sculpture' },
   { node: 'pn-a', det: 'pd-a', name: 'Prototype V1 and Cabin 1',     detail: 'Design and engineering under way' },
   { node: 'pn-a', det: 'pd-a', name: 'Alternative Solution pathway', detail: 'Evaluation under way' },
   { node: 'pn-p', det: 'pd-p', name: 'Testing and system validation', detail: 'Pending commissioning and engineering' },
@@ -57,7 +57,7 @@ const PRINCIPLES = [
   { lead: 'Parallel progress.', text: 'Design, materials and equipment work proceed together where practicable.' },
   { lead: 'Evidence-led.',      text: 'Choices follow engineering review, testing and regulatory requirements.' },
   { lead: 'Honest status.',     text: 'No claims are made beyond what has been achieved.' },
-  { lead: 'IP protected.',      text: 'Details remain confidential pending patent preparation.' },
+  { lead: 'Technical details remain confidential during development.',      text: '' },
 ];
 
 export default function PrototypeV1() {
@@ -89,7 +89,7 @@ export default function PrototypeV1() {
               Develop the simplest practicable Prototype V1 system that can support an Alternative Solution acceptance pathway in British Columbia.
             </div>
             <div className="v1-hs-sub">
-              Configuration and material details are intentionally withheld during development. System validation and building approval remain pending.
+              Prototype V1 is Spirea’s first integrated wall system. Cabin 1 is the proposed demonstration building for engineering validation and approval. Technical details remain confidential during development.
             </div>
           </div>
 
@@ -126,7 +126,7 @@ export default function PrototypeV1() {
               <div className="vc">
                 <div className="vc-lbl">Initial material selection</div>
                 <p className="ip-text" style={{ fontSize: 15, lineHeight: 1.7 }}>
-                  Guan Li’s premix adapted for BC conditions, or the hemp-based printing material, depending on readiness and engineering evidence.
+                  Manufacturer-supplied premix adapted for BC conditions, or the hemp-based printing material, depending on readiness and engineering evidence.
                 </p>
               </div>
             </div>

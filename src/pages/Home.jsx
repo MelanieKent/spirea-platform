@@ -58,7 +58,7 @@ const HEMP_CARDS = [
   {
     label: 'Initial V1 demonstration',
     title: 'Selected on readiness and evidence',
-    body: 'Guan Li’s premix adapted for BC conditions, or the hemp-based printing material, depending on readiness and engineering evidence.',
+    body: 'Manufacturer-supplied premix adapted for BC conditions, or the hemp-based printing material, depending on readiness and engineering evidence.',
   },
 ];
 
@@ -81,14 +81,14 @@ const DEV_CELLS = [
   {
     tag: 'Fabrication experience',
     name: 'UBC coyote project',
-    body: 'A printed stone base for a metal coyote sculpture, an initial setting to build fabrication experience and explore artistic design.',
+    body: 'Proposed 3D-printed pedestal for a steel coyote sculpture, an initial setting to build fabrication experience and explore artistic design.',
     status: 'Under development',
     dot: 'teal',
   },
   {
     tag: 'Engineering',
     name: 'Prototype V1 and Cabin 1',
-    body: 'A team of engineers is designing and engineering Prototype V1, and evaluating an Alternative Solution pathway for Cabin 1 in British Columbia.',
+    body: 'Prototype V1 is Spirea’s first integrated wall system. Cabin 1 is the proposed demonstration building for engineering validation and approval. Engineering and Alternative Solution pathway evaluation are underway.',
     status: 'Design and engineering under way',
     dot: 'teal',
   },
@@ -230,7 +230,7 @@ export default function Home() {
               height={820}
               alt="Blue and white articulated Small Spider 3D concrete printer on tracks against a white background"
             />
-            <figcaption>Guan Li Small Spider printer</figcaption>
+            <figcaption>Construction printer from Spirea’s equipment manufacturer</figcaption>
           </figure>
           <div className="dev-prio">
             <b style={{ fontWeight: '550' }}>Immediate priority</b>
@@ -245,7 +245,7 @@ export default function Home() {
         <div className="two-col-wide two-col-even" style={{ marginBottom: 36 }}>
           <h2 className="sh">Architectural and landscape features, starting with a focused pilot.</h2>
           <p className="sbody">
-            Digital fabrication may offer design freedom for curved, textured and bespoke elements. Spirea would like to explore this with design and construction teams through one well-defined pilot feature, with cost compared against conventional fabrication.
+            Digital fabrication may offer design freedom for curved, textured and bespoke elements. One landscape or architectural feature would let the teams assess design quality, fabrication feasibility and installed cost against a conventional alternative. No cost savings or performance benefits are assumed before evaluation.
           </p>
         </div>
 
@@ -259,7 +259,7 @@ export default function Home() {
           />
           <figcaption>
             <b style={{ fontWeight: '550' }}>Fabrication reference</b>
-            Completed project by Guan Li, Spirea’s equipment supplier, shown as a fabrication reference only. It is not a Spirea project, does not use hemp materials and carries no Canadian approval. Photograph: Guan Li.
+            Completed project by Spirea’s equipment manufacturer, shown as a fabrication reference only. It is not a Spirea project, does not use hemp materials and carries no Canadian approval. Photograph supplied by the manufacturer.
           </figcaption>
         </figure>
 
@@ -296,7 +296,7 @@ export default function Home() {
         <SectionDivider label="Longer-term applications" />
         <div className="two-col-wide two-col-even" style={{ marginBottom: 36 }}>
           <h2 className="sh">Where the platform may be deployed, in future.</h2>
-          <p className="sbody">These are future directions, pending Prototype V1 validation and the relevant approvals. They are not current products.</p>
+          <p className="sbody">These are future directions. Each would require suitable partners, Prototype V1 validation and relevant approvals.</p>
         </div>
         <div className="apps-preview-grid">
           {LONG_TERM.map((a) => (

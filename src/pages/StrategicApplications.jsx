@@ -24,7 +24,7 @@ const DOMAINS = [
       ['Climate range', 'Extreme cold to high humidity'],
       ['Performance',   'Thermal, structural, durability'],
       ['Application',   'Housing, institutional, infrastructure'],
-      ['Stage',         'Pending Prototype V1 validation'],
+      ['Stage',         'Future direction: needs partners, validation and approvals'],
     ],
     bg: 'var(--dv)',
     Diagram: D1ResilienceMap,
@@ -41,7 +41,7 @@ const DOMAINS = [
       ['Application', 'Emergency housing, rapid-response infrastructure'],
       ['Key feature', 'Reduced on-site trade dependency'],
       ['Priority',    'Time-to-occupancy, repeatability'],
-      ['Stage',       'Pending Prototype V1 validation'],
+      ['Stage',       'Future direction: needs partners, validation and approvals'],
     ],
     bg: '#CBCAC4',
     Diagram: D2DeploymentGrid,
@@ -58,7 +58,7 @@ const DOMAINS = [
       ['Geography',   'Northern Canada, remote communities'],
       ['Application', 'Housing, community, strategic facilities'],
       ['Key feature', 'Factory production, reduced site labour'],
-      ['Stage',       'Pending Prototype V1 validation'],
+      ['Stage',       'Future direction: needs partners, validation and approvals'],
     ],
     bg: '#D0CEC8',
     Diagram: D3RemoteMap,
@@ -80,7 +80,7 @@ export default function StrategicApplications() {
             Spirea is exploring future deployment contexts where an integrated approach to materials, fabrication and assembly may offer advantages.
           </p>
           <div className="apps-note">
-            Applications described here represent intended future deployment domains, not current operational capability. Prototype V1 is under active development. All applications are contingent on successful validation and engineering review.
+            Future directions, not current capability. Each would require suitable partners, Prototype V1 validation and relevant approvals.
           </div>
         </div>
 
@@ -113,7 +113,7 @@ export default function StrategicApplications() {
             A longer-term direction for conditions where an integrated approach may help.
           </h2>
           <p className="sbody" style={{ maxWidth: 480 }}>
-            All applications are contingent on the successful development and validation of Prototype V1. Spirea Platform welcomes discussions with organisations working in these domains, beginning with a focused pilot.
+            Each direction would require suitable partners, validation and relevant approvals. Spirea Platform welcomes discussions with organisations working in these domains, beginning with a focused pilot.
           </p>
         </div>
       </div>
