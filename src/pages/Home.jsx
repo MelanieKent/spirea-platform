@@ -101,9 +101,9 @@ const NEAR_TERM = [
 ];
 
 const PILOT_STEPS = [
-  { title: '1. Select a feature',    body: 'One landscape or architectural element with a clear purpose and budget.' },
-  { title: '2. Review and sample',   body: 'Assess feasibility with the design and engineering team, then a printed sample once equipment is commissioned.' },
-  { title: '3. Compare and decide',  body: 'Compare performance and installed cost before any project use.' },
+  { title: '1. Select a feature',    body: 'One landscape or architectural element, selected with the design team.' },
+  { title: '2. Review and sample',   body: 'Review design and feasibility with the design and engineering team; sampling follows equipment commissioning.' },
+  { title: '3. Compare and decide',  body: 'Compare installed cost with a conventional alternative before any project use.' },
 ];
 
 const LONG_TERM = [
@@ -234,7 +234,7 @@ export default function Home() {
           </figure>
           <div className="dev-prio">
             <b style={{ fontWeight: '550' }}>Immediate priority</b>
-            Develop the simplest practicable system for a BC Alternative Solution pathway. Material selection follows readiness and engineering evidence; system validation and building approval remain pending.
+            Develop the simplest practicable system for a BC Alternative Solution pathway. Initial material selection follows readiness and engineering evidence; system validation and building approval remain pending.
           </div>
         </div>
       </section>

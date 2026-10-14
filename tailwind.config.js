@@ -21,8 +21,8 @@ export default {
         'done-dark': '#2C2C2A',   // "Completed" stage node only
       },
       fontFamily: {
-        display: ['"DM Serif Display"', 'serif'],
-        sans:    ['"DM Sans"', 'sans-serif'],
+        display: ['"DM Serif Display"', 'Cambria', 'Georgia', '"Times New Roman"', 'serif'],
+        sans:    ['"DM Sans"', 'Calibri', '"Segoe UI"', 'Arial', 'sans-serif'],
       },
       fontSize: {
         '2xs': ['0.65rem', { lineHeight: '1rem', letterSpacing: '0.1em' }],

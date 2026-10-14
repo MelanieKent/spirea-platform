@@ -28,8 +28,8 @@ img { max-width: 100%; }
   --di: #1A1A18;
   --teal: #1D9E75;
   --teal-d: #0F6E56;
-  --sans: 'DM Sans', sans-serif;
-  --serif: 'DM Serif Display', serif;
+  --sans: "DM Sans", Calibri, "Segoe UI", Arial, sans-serif;
+  --serif: "DM Serif Display", Cambria, Georgia, "Times New Roman", serif;
 }
 
 
@@ -61,7 +61,7 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .sarc { display: inline-block; width: 40px; height: 1px; background: var(--teal); margin-right: 14px; flex-shrink: 0; }
 .slbl { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mi); font-weight: 400; }
 .slbl.dk { color: var(--mi); }
-.sh { font-family: var(--serif); font-weight: 550; font-size: clamp(22px,2.8vw,34px); color: var(--di); line-height: 1.25; letter-spacing: -.01em; }
+.sh { font-family: var(--serif); font-weight: 700; font-size: clamp(22px,2.8vw,34px); color: var(--di); line-height: 1.25; letter-spacing: -.01em; }
 .sh.rev { color: var(--di); }
 .sbody { font-size: 16px; font-weight: 400; color: var(--ink); line-height: 1.87; }
 .sbody.rev { color: var(--ink); }
@@ -87,7 +87,7 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .hero-eb { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
 .hero-eb-rule { display: inline-block; width: 28px; height: 1px; background: var(--teal); flex-shrink: 0; }
 .hero-eb-lbl { font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal-d); font-weight: 400; }
-.hero-h1 { font-family: var(--serif); font-size: clamp(32px,4.6vw,54px); font-weight: 550; line-height: 1.1; color: var(--di); letter-spacing: -.01em; margin-bottom: 24px; }
+.hero-h1 { font-family: var(--serif); font-size: clamp(32px,4.6vw,54px); font-weight: 400; line-height: 1.1; color: var(--di); letter-spacing: -.01em; margin-bottom: 24px; }
 .hero-h1 em { font-style: italic; color: var(--ink); }
 .hero-body { font-size: 17px; font-weight: 400; color: var(--ink); line-height: 1.84; max-width: 600px; margin-bottom: 44px; }
 .hero-acts { display: flex; gap: 14px; flex-wrap: wrap; }
@@ -216,7 +216,7 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .domain { padding: 56px 64px; border-bottom: 0.5px solid var(--dv); display: grid; grid-template-columns: 1fr 300px; gap: 56px; align-items: start; }
 .domain:nth-child(even) { background: var(--ch); }
 .domain-num { font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mi); margin-bottom: 12px; font-weight: 400; }
-.domain-title { font-family: var(--serif); font-weight: 550; font-size: 25px; color: var(--di); line-height: 1.2; margin-bottom: 7px; }
+.domain-title { font-family: var(--serif); font-weight: 700; font-size: 25px; color: var(--di); line-height: 1.2; margin-bottom: 7px; }
 .domain-sub { font-size: 14px; font-weight: 400; color: var(--teal-d); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 22px; }
 .domain-body { font-size: 16px; font-weight: 400; color: var(--ink); line-height: 1.87; margin-bottom: 14px; }
 .domain-cond { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin-top: 20px; }
@@ -232,7 +232,7 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .founder-page { background: var(--ch); }
 .founder-hero { padding: 64px 64px 52px; border-bottom: 0.5px solid var(--dv); display: grid; grid-template-columns: 1fr 280px; gap: 72px; align-items: start; }
 .fo-name { font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mi); margin-bottom: 16px; font-weight: 400; }
-.fo-h { font-family: var(--serif); font-size: clamp(24px,3vw,38px); font-weight: 550; color: var(--di); line-height: 1.2; letter-spacing: -.01em; margin-bottom: 22px; }
+.fo-h { font-family: var(--serif); font-size: clamp(24px,3vw,38px); font-weight: 700; color: var(--di); line-height: 1.2; letter-spacing: -.01em; margin-bottom: 22px; }
 .fo-intro { font-size: 16px; font-weight: 400; color: var(--ink); line-height: 1.87; max-width: 430px; }
 .founder-photo { background: var(--dv); aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mi); text-align: center; line-height: 2; }
 .founder-content { padding: 56px 64px; background: var(--ch); }
@@ -252,7 +252,7 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
    ══════════════════════════════════════════════════════════════════════════ */
 .contact-page { background: #fff; min-height: 80vh; }
 .contact-inner { max-width: 500px; margin: 0 auto; padding: 88px 32px 72px; text-align: center; }
-.co-h { font-family: var(--serif); font-weight: 550; font-size: clamp(28px,4vw,44px); color: var(--di); margin-bottom: 14px; line-height: 1.15; }
+.co-h { font-family: var(--serif); font-weight: 700; font-size: clamp(28px,4vw,44px); color: var(--di); margin-bottom: 14px; line-height: 1.15; }
 .co-sub { font-size: 16px; font-weight: 400; color: var(--ink); line-height: 1.82; max-width: 400px; margin: 0 auto 48px; }
 .co-rule { height: 0.5px; background: var(--dv); margin-bottom: 40px; }
 .co-channel { display: flex; justify-content: space-between; align-items: baseline; padding: 15px 0; border-bottom: 0.5px solid var(--dv); text-align: left; }
