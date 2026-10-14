@@ -96,8 +96,8 @@ const DEV_CELLS = [
 
 const NEAR_TERM = [
   { num: 'Application 01', title: 'Courtyard and landscape features',  body: 'Seating, planters, entry features and other elements shaped to complement a project’s architecture.' },
-  { num: 'Application 02', title: 'Sculptural elements and art bases', body: 'Assess feasibility with the design and engineering team, then a printed sample once equipment is commissioned.' },
-  { num: 'Application 03', title: 'Bespoke architectural details',     body: 'Compare performance and installed cost before any project use.' },
+  { num: 'Application 02', title: 'Sculptural elements and art bases', body: 'Custom sculpture bases and landscape installations developed with artists and design teams.' },
+  { num: 'Application 03', title: 'Bespoke architectural details',     body: 'Curved or textured feature elements, subject to engineering, durability and installation requirements.' },
 ];
 
 const PILOT_STEPS = [
